@@ -12,6 +12,6 @@ Gestión de seguimiento de constantes vitales de pacientes
   - [MarcoMan](https://www.youtube.com/@marcomanchannel)
 - bucar recursos sobre el **ORM en C#**:
   - [Entity Framework Core for Beginners](https://www.youtube.com/playlist?list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6)
-### Semana 3 \( 6/10 - 12/10 \):  TODO-> Comenzar a diseñar y codificar las principales pantallas \(mockups\) de la app
-- TODO
-- TODO
+### Semana 3 \( 6/10 - 12/10 \): Empezar el diseño de la base de datos y a trabajar con un CRUD básico usando el paquete MySql.Data de Oracle Corporation. 
+- instalar el paquete MySql.Data usando el gestor de paquetes NuGet.
+- aprender a crear clases en C# para la conexión a la base de datos, desconexión, y operaciones básicas de CRUD.
