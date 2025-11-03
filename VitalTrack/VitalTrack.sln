@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36603.0 d17.14
+VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalTrack", "VitalTrack\VitalTrack.csproj", "{FE4E4B86-EC9D-4116-A5C4-1489A97E0531}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VitalTrack", "VitalTrack\VitalTrack.csproj", "{BE11D1CE-1128-4870-9DA0-642E8B84792C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FE4E4B86-EC9D-4116-A5C4-1489A97E0531}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FE4E4B86-EC9D-4116-A5C4-1489A97E0531}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FE4E4B86-EC9D-4116-A5C4-1489A97E0531}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FE4E4B86-EC9D-4116-A5C4-1489A97E0531}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE11D1CE-1128-4870-9DA0-642E8B84792C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE11D1CE-1128-4870-9DA0-642E8B84792C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE11D1CE-1128-4870-9DA0-642E8B84792C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE11D1CE-1128-4870-9DA0-642E8B84792C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
