@@ -15,3 +15,22 @@ Gestión de seguimiento de constantes vitales de pacientes
 ### Semana 3 \( 6/10 - 12/10 \): Empezar el diseño de la base de datos y a trabajar con un CRUD básico usando el paquete MySql.Data de Oracle Corporation. 
 - instalar el paquete MySql.Data usando el gestor de paquetes NuGet.
 - aprender a crear clases en C# para la conexión a la base de datos, desconexión, y operaciones básicas de CRUD.
+### Semana 4 \( 13/10 - 19/10 \): La cosa se lió.
+- Me dí cuenta de que confundí WPF (NET Framework) con WPF (Core Net) y tuve que revisar los cambios que tendría que hacer.
+- Trabajar con XAML y el "code behind"
+### Semana 5 \( 20/10 - 26/10 \): Probando el ORM Entity Framework Core con SQL Server, SQL Server Management Studio y luego contra MySQL usando Pomelo EntityFrameworkCore.Mysql.
+- Básicamente, conseguir que las cadenas de conexión a las bases de datos funcionasen y probar varias consultas usando Fluent y LINQ (JOINs, CRUD).
+- Trabajo con el MVVC en C#: técnica de crear una clase que representa un modelo de datos en carpeta ViewModels y la vista, que hace uso del modelo, en carpeta Views.
+- Sequir estudiando como gestionar los eventos en WPF Core Net y la sintaxis de XAML.
+### Semana 6 \( 27/10 - 2/10 \): Empiezo a aplicar lo trabajado y aprendido en la aplicación del proyecto.
+- Añadir dependencias: Pomelo (para MySQL), Entity Framework Core, Entity Framework Core Tools, Entity Framework Core Design.
+- Crear el modelo de datos usando estrategia "Database first" (Scaffold-DbContext, en consola administrador de paquetes NuGet).
+- Buscar iconos y otros recursos.
+- Crear la pantalla principal (más o menos).
+<!-- ### Semana 7 \( 3/11 - 9/11 \): ... -->
+<!-- - ... -->
+<!-- - ... -->
+<!-- ### Semana 8 \( 10/11 - 16/11 \): ... -->
+<!-- ### Semana 9 \( 10/11 - 16/11 \): ... -->
+<!-- ### Semana 10 \( 10/11 - 16/11 \): ... -->
+<!-- ### Semana 11 \( 10/11 - 16/11 \): ... -->
