@@ -66,7 +66,7 @@
                         <ColumnDefinition Width="35*"/>
                         <ColumnDefinition Width="53*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="AuditoriaImage" HorizontalAlignment="Center" Height="auto" Width="73" Source="Images/icons8-Auditoria-100-4.png"/>
+                    <Image x:Name="AuditoriaImage" HorizontalAlignment="Center" Height="auto" Width="73" Source="Images/icons8-salary-100-4.png"/>
                     <TextBlock Text="Auditoria" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
@@ -115,19 +115,19 @@
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="LogoutImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="Images/icons8-exit-100-9.png"/>
-                    <TextBlock Text="Log Out" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <TextBlock Text="Cerrar sesión" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
         </StackPanel>
         <StackPanel Grid.Row="8" Margin="0,2,0,0">
-            <Button Grid.Row="8" x:Name="btnExit" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="8" x:Name="btnCerrar" Width="250" Height="60" HorizontalAlignment="Left">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="auto"/>
                         <ColumnDefinition Width="auto"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="ExitImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="Images/icons8-exit-100-4.png"/>
-                    <TextBlock Text="Exit" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                    <Image x:Name="CerrarImage" HorizontalAlignment="Left" Height="auto" Width="73" Margin="0,0,0,0" Source="Images/icons8-exit-100-4.png"/>
+                    <TextBlock Text="Cerrar App" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"/>
                 </Grid>
             </Button>
         </StackPanel>
