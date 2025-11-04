@@ -1,0 +1,1 @@
+PM> Scaffold-DbContext "Server=localhost;Database=VitalTrackDB;User Id=root;Password=Abc123.;" Pomelo.EntityFrameworkCore.MySql -ContextDir Data  -OutputDir Models/Generated -ContextNamespace VitalTrack.Data -Namespace VitalTrack.Models
