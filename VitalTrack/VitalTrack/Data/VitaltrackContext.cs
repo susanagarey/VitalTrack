@@ -323,6 +323,9 @@ public partial class VitaltrackContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(120)
                 .HasColumnName("email");
+            entity.Property(e => e.Foto)
+                .HasMaxLength(250)
+                .HasColumnName("foto");
             entity.Property(e => e.HashPassword)
                 .HasMaxLength(255)
                 .HasColumnName("hash_password");

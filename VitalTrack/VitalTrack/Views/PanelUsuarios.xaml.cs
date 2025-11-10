@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VitalTrack.Data;
+using VitalTrack.Models;
 
 namespace VitalTrack.Views
 {
@@ -23,6 +25,27 @@ namespace VitalTrack.Views
         public PanelUsuarios()
         {
             InitializeComponent();
+
+            using(VitaltrackContext db = new VitaltrackContext())
+            {
+                List<Usuario> usuarios = db.Usuarios.ToList();
+                gridUsuarios.ItemsSource = usuarios;
+            }
+        }
+
+        private void gridUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Usuario usuario = (Usuario)gridUsuarios.SelectedItem;
+            txtUsuarioID.Text = usuario.UsuarioId.ToString();
+            txtActivo.Text = usuario.Activo.HasValue ? (usuario.Activo.Value ? "Sí" : "No") : "Desconocido";
+            txtCuentaUsuario.Text = usuario.NombreUsuario;
+            txtNombreUsuario.Text = usuario.Nombre;
+            txtApellidosUsuario.Text = usuario.Apellidos;
+            txtTelefonoUsuario.Text = usuario.Telefono;
+            txtEmailUsuario.Text = usuario.Email;
+            txtCreadoUsuario.Text = usuario.CreadoEn.ToString();
+            txtUltimoAccesoUsuario.Text = usuario.UltimoAcceso.ToString();
+            fotoUsuario.Source = new BitmapImage(new Uri("/Images/Fotos/" + usuario.Foto, UriKind.Relative));
         }
     }
 }

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="500" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
+             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
@@ -33,7 +33,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Content="ID" Grid.Row="0" Grid.Column="0" Height="34" Width="28" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="62,0,0,0"/>
-            <TextBox x:Name="txtUserID" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,8,0,8" />
+            <TextBox x:Name="txtUsuarioID" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,8,0,8" />
             <Label Content="Activo" Grid.Row="0" Grid.Column="2" Height="34" Width="70" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
             <TextBox x:Name="txtActivo" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Margin="90,8,10,8" Grid.ColumnSpan="2" />
         </Grid>
@@ -60,8 +60,24 @@
         <TextBox x:Name="txtUltimoAccesoUsuario" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
 
         <!-- Foto usuario -->
-        <Image x:Name="EmployeeImage"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="pack://application:,,,/Fotos/usuario01.png" />
+        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/usuario01.png" />
 
+        <DataGrid Grid.Row="7"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="gridUsuarios_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"/>
+                <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"/>
+                <DataGridTextColumn Header="Último Acceso" Binding="{Binding UltimoAcceso}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        
         <Grid Grid.Row="8" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
@@ -73,9 +89,7 @@
             <Button Margin="10,10,10,10" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
         </Grid>
 
-        <DataGrid x:Name="gridUsuarios" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow">
             
-        </DataGrid>
 
     </Grid>
 

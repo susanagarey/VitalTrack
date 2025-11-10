@@ -7,9 +7,9 @@ public partial class Usuario
 {
     public uint UsuarioId { get; set; }
 
-    public string NombreUsuario { get; set; } = null!;
+    public bool? Activo { get; set; }
 
-    public string Email { get; set; } = null!;
+    public string NombreUsuario { get; set; } = null!;
 
     public string HashPassword { get; set; } = null!;
 
@@ -19,7 +19,9 @@ public partial class Usuario
 
     public string? Telefono { get; set; }
 
-    public bool? Activo { get; set; }
+    public string Email { get; set; } = null!;
+
+    public string? Foto { get; set; }
 
     public DateTime? UltimoAcceso { get; set; }
 

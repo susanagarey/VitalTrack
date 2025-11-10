@@ -20,6 +20,13 @@
     <None Remove="Images\Devices_Image.png" />
     <None Remove="Images\discount_icon - copia.png" />
     <None Remove="Images\discount_icon.png" />
+    <None Remove="Images\Fotos\usuario01.png" />
+    <None Remove="Images\Fotos\usuario02.png" />
+    <None Remove="Images\Fotos\usuario03.png" />
+    <None Remove="Images\Fotos\usuario04.png" />
+    <None Remove="Images\Fotos\usuario05.png" />
+    <None Remove="Images\Fotos\usuario06.png" />
+    <None Remove="Images\Fotos\usuario07.png" />
     <None Remove="Images\hamburger_icon.png" />
     <None Remove="Images\icons8-employee-100-2.png" />
     <None Remove="Images\icons8-employee-100-4.png" />
@@ -33,6 +40,30 @@
     <None Remove="Images\icons8-trees-100-12.png" />
     <None Remove="Images\line_chart.png" />
     <None Remove="Images\sales_icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Fotos\usuario01.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario02.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario03.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario04.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario05.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario06.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\usuario07.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
   <ItemGroup>
@@ -127,7 +158,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Fotos\" />
+    <Folder Include="Data\" />
+    <Folder Include="Models\Generated\" />
   </ItemGroup>
 
 </Project>
