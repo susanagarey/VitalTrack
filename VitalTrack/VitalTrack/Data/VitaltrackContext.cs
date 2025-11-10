@@ -6,13 +6,13 @@ using VitalTrack.Models;
 
 namespace VitalTrack.Data;
 
-public partial class VitalTrackDbContext : DbContext
+public partial class VitaltrackContext : DbContext
 {
-    public VitalTrackDbContext()
+    public VitaltrackContext()
     {
     }
 
-    public VitalTrackDbContext(DbContextOptions<VitalTrackDbContext> options)
+    public VitaltrackContext(DbContextOptions<VitaltrackContext> options)
         : base(options)
     {
     }
@@ -20,8 +20,6 @@ public partial class VitalTrackDbContext : DbContext
     public virtual DbSet<Alerta> Alertas { get; set; }
 
     public virtual DbSet<Auditorium> Auditoria { get; set; }
-
-    public virtual DbSet<Constante> Constantes { get; set; }
 
     public virtual DbSet<Paciente> Pacientes { get; set; }
 
@@ -35,21 +33,21 @@ public partial class VitalTrackDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseMySql("server=localhost;database=VitalTrackDB;user id=root;password=Abc123.", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.43-mysql"));
+        => optionsBuilder.UseMySql("server=localhost;database=vitaltrack;user id=root;password=Abc123.", Microsoft.EntityFrameworkCore.ServerVersion.Parse("8.0.43-mysql"));
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder
-            .UseCollation("utf8mb4_spanish_ci")
+            .UseCollation("utf8mb4_0900_ai_ci")
             .HasCharSet("utf8mb4");
 
         modelBuilder.Entity<Alerta>(entity =>
         {
             entity.HasKey(e => e.AlertaId).HasName("PRIMARY");
 
-            entity.ToTable("alertas");
-
-            entity.HasIndex(e => e.ConstanteId, "fk_alertas_constante");
+            entity
+                .ToTable("alertas")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.ReconocidaPor, "fk_alertas_reconocida_por");
 
@@ -63,7 +61,6 @@ public partial class VitalTrackDbContext : DbContext
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
                 .HasColumnName("actualizado_en");
-            entity.Property(e => e.ConstanteId).HasColumnName("constante_id");
             entity.Property(e => e.CreadoEn)
                 .HasDefaultValueSql("CURRENT_TIMESTAMP")
                 .HasColumnType("datetime")
@@ -88,11 +85,6 @@ public partial class VitalTrackDbContext : DbContext
                 .HasColumnType("enum('TA','FC','SPO2','TEMP','GLUCOSA','GENERAL')")
                 .HasColumnName("tipo_alerta");
 
-            entity.HasOne(d => d.Constante).WithMany(p => p.Alerta)
-                .HasForeignKey(d => d.ConstanteId)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("fk_alertas_constante");
-
             entity.HasOne(d => d.Paciente).WithMany(p => p.Alerta)
                 .HasForeignKey(d => d.PacienteId)
                 .HasConstraintName("fk_alertas_paciente");
@@ -107,7 +99,9 @@ public partial class VitalTrackDbContext : DbContext
         {
             entity.HasKey(e => e.AuditoriaId).HasName("PRIMARY");
 
-            entity.ToTable("auditoria");
+            entity
+                .ToTable("auditoria")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.UsuarioId, "fk_auditoria_usuario");
 
@@ -122,10 +116,6 @@ public partial class VitalTrackDbContext : DbContext
             entity.Property(e => e.Detalles)
                 .HasColumnType("json")
                 .HasColumnName("detalles");
-            entity.Property(e => e.Entidad)
-                .HasMaxLength(100)
-                .HasColumnName("entidad");
-            entity.Property(e => e.EntidadId).HasColumnName("entidad_id");
             entity.Property(e => e.UsuarioId).HasColumnName("usuario_id");
 
             entity.HasOne(d => d.Usuario).WithMany(p => p.Auditoria)
@@ -134,68 +124,13 @@ public partial class VitalTrackDbContext : DbContext
                 .HasConstraintName("fk_auditoria_usuario");
         });
 
-        modelBuilder.Entity<Constante>(entity =>
-        {
-            entity.HasKey(e => e.ConstanteId).HasName("PRIMARY");
-
-            entity.ToTable("constantes");
-
-            entity.HasIndex(e => e.FrecuenciaCardiaca, "idx_constantes_fc");
-
-            entity.HasIndex(e => e.GlucosaMgdl, "idx_constantes_glucosa");
-
-            entity.HasIndex(e => new { e.PacienteId, e.MedidoEn }, "idx_constantes_paciente_fecha").IsDescending(false, true);
-
-            entity.HasIndex(e => e.RegistradoPor, "idx_constantes_registrado_por");
-
-            entity.HasIndex(e => e.Spo2, "idx_constantes_spo2");
-
-            entity.HasIndex(e => new { e.TensionSistolica, e.TensionDiastolica }, "idx_constantes_ta");
-
-            entity.HasIndex(e => e.TemperaturaC, "idx_constantes_temp");
-
-            entity.Property(e => e.ConstanteId).HasColumnName("constante_id");
-            entity.Property(e => e.ActualizadoEn)
-                .ValueGeneratedOnAddOrUpdate()
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("datetime")
-                .HasColumnName("actualizado_en");
-            entity.Property(e => e.CreadoEn)
-                .HasDefaultValueSql("CURRENT_TIMESTAMP")
-                .HasColumnType("datetime")
-                .HasColumnName("creado_en");
-            entity.Property(e => e.FrecuenciaCardiaca).HasColumnName("frecuencia_cardiaca");
-            entity.Property(e => e.GlucosaMgdl).HasColumnName("glucosa_mgdl");
-            entity.Property(e => e.MedidoEn)
-                .HasColumnType("datetime")
-                .HasColumnName("medido_en");
-            entity.Property(e => e.NotasMedicion)
-                .HasMaxLength(255)
-                .HasColumnName("notas_medicion");
-            entity.Property(e => e.PacienteId).HasColumnName("paciente_id");
-            entity.Property(e => e.RegistradoPor).HasColumnName("registrado_por");
-            entity.Property(e => e.Spo2).HasColumnName("spo2");
-            entity.Property(e => e.TemperaturaC)
-                .HasPrecision(4, 1)
-                .HasColumnName("temperatura_c");
-            entity.Property(e => e.TensionDiastolica).HasColumnName("tension_diastolica");
-            entity.Property(e => e.TensionSistolica).HasColumnName("tension_sistolica");
-
-            entity.HasOne(d => d.Paciente).WithMany(p => p.Constantes)
-                .HasForeignKey(d => d.PacienteId)
-                .HasConstraintName("fk_constantes_paciente");
-
-            entity.HasOne(d => d.RegistradoPorNavigation).WithMany(p => p.Constantes)
-                .HasForeignKey(d => d.RegistradoPor)
-                .OnDelete(DeleteBehavior.SetNull)
-                .HasConstraintName("fk_constantes_registrado_por");
-        });
-
         modelBuilder.Entity<Paciente>(entity =>
         {
             entity.HasKey(e => e.PacienteId).HasName("PRIMARY");
 
-            entity.ToTable("pacientes");
+            entity
+                .ToTable("pacientes")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.Dni, "dni").IsUnique();
 
@@ -269,7 +204,9 @@ public partial class VitalTrackDbContext : DbContext
         {
             entity.HasKey(e => e.RolId).HasName("PRIMARY");
 
-            entity.ToTable("roles");
+            entity
+                .ToTable("roles")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.Nombre, "nombre").IsUnique();
 
@@ -295,7 +232,9 @@ public partial class VitalTrackDbContext : DbContext
         {
             entity.HasKey(e => e.UmbralId).HasName("PRIMARY");
 
-            entity.ToTable("umbrales_paciente");
+            entity
+                .ToTable("umbrales_paciente")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.ActualizadoPor, "fk_umbrales_paciente_actualizado_por");
 
@@ -356,7 +295,9 @@ public partial class VitalTrackDbContext : DbContext
         {
             entity.HasKey(e => e.UsuarioId).HasName("PRIMARY");
 
-            entity.ToTable("usuarios");
+            entity
+                .ToTable("usuarios")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.Email, "email").IsUnique();
 
@@ -405,7 +346,9 @@ public partial class VitalTrackDbContext : DbContext
                 .HasName("PRIMARY")
                 .HasAnnotation("MySql:IndexPrefixLength", new[] { 0, 0 });
 
-            entity.ToTable("usuarios_roles");
+            entity
+                .ToTable("usuarios_roles")
+                .UseCollation("utf8mb4_spanish_ci");
 
             entity.HasIndex(e => e.AsignadoPor, "fk_usuarios_roles_asignado_por");
 

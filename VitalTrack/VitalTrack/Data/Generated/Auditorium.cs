@@ -9,10 +9,6 @@ public partial class Auditorium
 
     public uint? UsuarioId { get; set; }
 
-    public string Entidad { get; set; } = null!;
-
-    public ulong EntidadId { get; set; }
-
     public string Accion { get; set; } = null!;
 
     public string? Detalles { get; set; }

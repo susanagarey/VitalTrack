@@ -9,8 +9,6 @@ public partial class Alerta
 
     public uint PacienteId { get; set; }
 
-    public ulong? ConstanteId { get; set; }
-
     public string TipoAlerta { get; set; } = null!;
 
     public string Severidad { get; set; } = null!;
@@ -28,8 +26,6 @@ public partial class Alerta
     public DateTime CreadoEn { get; set; }
 
     public DateTime ActualizadoEn { get; set; }
-
-    public virtual Constante? Constante { get; set; }
 
     public virtual Paciente Paciente { get; set; } = null!;
 

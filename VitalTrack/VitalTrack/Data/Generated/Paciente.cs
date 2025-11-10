@@ -41,8 +41,6 @@ public partial class Paciente
 
     public virtual ICollection<Alerta> Alerta { get; set; } = new List<Alerta>();
 
-    public virtual ICollection<Constante> Constantes { get; set; } = new List<Constante>();
-
     public virtual Usuario? CreadoPorNavigation { get; set; }
 
     public virtual ICollection<UmbralesPaciente> UmbralesPacientes { get; set; } = new List<UmbralesPaciente>();

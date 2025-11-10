@@ -31,8 +31,6 @@ public partial class Usuario
 
     public virtual ICollection<Auditorium> Auditoria { get; set; } = new List<Auditorium>();
 
-    public virtual ICollection<Constante> Constantes { get; set; } = new List<Constante>();
-
     public virtual ICollection<Paciente> PacienteActualizadoPorNavigations { get; set; } = new List<Paciente>();
 
     public virtual ICollection<Paciente> PacienteCreadoPorNavigations { get; set; } = new List<Paciente>();
