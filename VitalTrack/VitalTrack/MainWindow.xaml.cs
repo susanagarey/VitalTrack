@@ -8,6 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VitalTrack.ViewModels;
 
 namespace VitalTrack
 {
@@ -19,6 +20,12 @@ namespace VitalTrack
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnUsuarios_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Listado usuarios";
+            DataContext = new UsuariosViewModel();
         }
     }
 }

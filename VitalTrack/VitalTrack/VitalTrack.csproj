@@ -126,4 +126,8 @@
     </Resource>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Fotos\" />
+  </ItemGroup>
+
 </Project>
