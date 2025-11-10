@@ -4,7 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VitalTrack"
-         
+        xmlns:views="clr-namespace:VitalTrack.Views"
+        xmlns:viewmodels="clr-namespace:VitalTrack.ViewModels"
         mc:Ignorable="d"
         Title="VitalTrack"  Name="PersonalMainWindow" 
         Height="540" 
@@ -160,4 +161,6 @@
         </StackPanel>
     </Grid>
 
+    
+    
 </Window>

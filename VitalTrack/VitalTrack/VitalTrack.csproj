@@ -115,11 +115,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Images\icons8-salary-100-4.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
