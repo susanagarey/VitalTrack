@@ -27,9 +27,12 @@ Gestión de seguimiento de constantes vitales de pacientes
 - Crear el modelo de datos usando estrategia "Database first" (Scaffold-DbContext, en consola administrador de paquetes NuGet).
 - Buscar iconos y otros recursos.
 - Crear la pantalla principal (más o menos).
-<!-- ### Semana 7 \( 3/11 - 9/11 \): ... -->
-<!-- - ... -->
-<!-- - ... -->
+### Semana 7 \( 3/11 - 9/11 \): La cosa empieza a funcionar mejor: 
+- Modificado ligeramente el esquema de la base de datos.
+- Finalizada pantalla principal.
+- Funciona la pantalla de listado de usuarios, obteniendo la lista de la base de datos.
+- Implementando altas de usuarios, modificación de usuarios y eliminación de usuarios.
+- Creao que ahora que ya entiendo cómo funciona todo en conjunto podré ir más rápido para acabar el proyeto a tiempo.
 <!-- ### Semana 8 \( 10/11 - 16/11 \): ... -->
 <!-- ### Semana 9 \( 10/11 - 16/11 \): ... -->
 <!-- ### Semana 10 \( 10/11 - 16/11 \): ... -->
