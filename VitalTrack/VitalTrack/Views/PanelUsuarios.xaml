@@ -33,9 +33,9 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Label Content="ID" Grid.Row="0" Grid.Column="0" Height="34" Width="28" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="62,0,0,0"/>
-            <TextBox x:Name="txtUsuarioID" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,8,0,8" />
+            <TextBox x:Name="txtUsuarioID" IsReadOnly="True" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="0,8,0,8" />
             <Label Content="Activo" Grid.Row="0" Grid.Column="2" Height="34" Width="70" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="20,0,0,0"/>
-            <TextBox x:Name="txtActivo" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Margin="90,8,10,8" Grid.ColumnSpan="2" />
+            <TextBox x:Name="txtActivo"  IsReadOnly="True" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Margin="90,8,10,8" Grid.ColumnSpan="2" />
         </Grid>
 
         <Label Content="Nombre usuario"  Grid.Column="1" Height="34" Width="157" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
@@ -54,18 +54,18 @@
         <TextBox x:Name="txtEmailUsuario" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
 
         <Label Content="Fecha alta"  Grid.Row="5"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtCreadoUsuario" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtCreadoUsuario" IsReadOnly="True" Grid.Row="5" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
 
         <Label Content="Acceso"  Grid.Row="6"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtUltimoAccesoUsuario" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtUltimoAccesoUsuario" IsReadOnly="True" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
 
         <!-- Foto usuario -->
         <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/usuario01.png" />
 
-        <DataGrid Grid.Row="7"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="gridUsuarios_SelectionChanged">
+        <DataGrid Grid.Row="7"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="gridUsuarios_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
                 <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
@@ -84,7 +84,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="10,10,10,10" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
+            <Button Margin="10,10,10,10" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" Click="btnAlta_Click" />
             <Button Margin="10,10,10,10" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
             <Button Margin="10,10,10,10" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
         </Grid>

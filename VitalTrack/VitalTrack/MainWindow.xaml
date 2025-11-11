@@ -7,7 +7,7 @@
         xmlns:views="clr-namespace:VitalTrack.Views" 
         xmlns:viewmodels="clr-namespace:VitalTrack.ViewModels" 
         mc:Ignorable="d"
-        Title="VitalTrack"  Name="PersonalMainWindow" 
+        Title="VitalTrack"  Name="VentanaPrincipal" 
         Height="600" 
         Width="1200" 
         WindowStartupLocation="CenterScreen"

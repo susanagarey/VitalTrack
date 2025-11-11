@@ -33,9 +33,15 @@ namespace VitalTrack.Views
             }
         }
 
+        Usuario usuarioGlobal;
         private void gridUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Usuario usuario = (Usuario)gridUsuarios.SelectedItem;
+            if (usuarioGlobal == null) {
+                usuarioGlobal = usuario;
+            }
+            usuario = usuario ?? usuarioGlobal;
+
             txtUsuarioID.Text = usuario.UsuarioId.ToString();
             txtActivo.Text = usuario.Activo.HasValue ? (usuario.Activo.Value ? "Sí" : "No") : "Desconocido";
             txtCuentaUsuario.Text = usuario.NombreUsuario;
@@ -46,6 +52,18 @@ namespace VitalTrack.Views
             txtCreadoUsuario.Text = usuario.CreadoEn.ToString();
             txtUltimoAccesoUsuario.Text = usuario.UltimoAcceso.ToString();
             fotoUsuario.Source = new BitmapImage(new Uri("/Images/Fotos/" + usuario.Foto, UriKind.Relative));
+        }
+
+        private void btnAlta_Click(object sender, RoutedEventArgs e)
+        {
+            VentanaNuevoUsuario ventana = new VentanaNuevoUsuario();
+            ventana.ShowDialog();
+
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                List<Usuario> usuarios = db.Usuarios.ToList();
+                gridUsuarios.ItemsSource = usuarios;
+            }
         }
     }
 }

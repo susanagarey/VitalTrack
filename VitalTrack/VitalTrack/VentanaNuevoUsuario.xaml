@@ -1,0 +1,72 @@
+﻿<Window x:Class="VitalTrack.VentanaNuevoUsuario"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VitalTrack"
+        mc:Ignorable="d"
+        Title="Alta Usuario"
+        Height="400" 
+        Width="600" 
+        WindowStartupLocation="CenterScreen"
+        FontSize="18" 
+        FontWeight="Bold"
+        Background="#ff91C4C3"
+        Icon="/Images/icons8-employee-100-3.png" ResizeMode="NoResize">
+
+    <Grid>
+        <!-- Estructura global del control -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Label Content="Alta usuario"  FontSize="26" Grid.Column="0" Height="42" Width="157" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,-1,0,0"/>
+
+        <Label Content="Nombre usuario"  Grid.Column="1" Height="34" Width="157" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBox x:Name="txtCuentaUsuario" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="172,8,10,10" />
+
+        <Label Content="Nombre"  Grid.Row="1"  Grid.Column="0" Height="34" Width="105" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBox x:Name="txtNombreUsuario" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+
+        <Label Content="Apellidos"  Grid.Row="2" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtApellidosUsuario" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+
+        <Label Content="Teléfono"  Grid.Row="3"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtTelefonoUsuario" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+
+        <Label Content="Email"  Grid.Row="4"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtEmailUsuario" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+
+        <Label Content="Fecha alta"  Grid.Row="5"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <DatePicker x:Name="txtCreadoUsuario" Grid.Row="5" Grid.Column="0" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="120,12,0,0" RenderTransformOrigin="0.644,0.501" Text="Fecha alta" SelectedDateFormat="Short" />
+
+        <Label Content="Foto"  Grid.Row="6"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+        <Button x:Name="btnCargarFoto" Grid.Row="6" Grid.Column="0" Content="Cargar foto" Height="30" Margin="120,10,10,8" Click="btnCargarFoto_Click"/>
+
+        <!-- Foto usuario -->
+        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/desconocido.png" />
+
+
+        <Grid Grid.Row="8" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Margin="10,0,10,0" Name="btnGuardar" Content="Guardar" FontSize="18" FontWeight="Bold" Height="33" VerticalAlignment="Center" />
+            <Button Margin="10,5,10,5" Name="btnSalir" Content="Salir sin guardar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnSalir_Click"/>
+        </Grid>
+    </Grid>
+</Window>

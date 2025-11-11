@@ -20,6 +20,8 @@
     <None Remove="Images\Devices_Image.png" />
     <None Remove="Images\discount_icon - copia.png" />
     <None Remove="Images\discount_icon.png" />
+    <None Remove="Images\Fotos\desconocida.png" />
+    <None Remove="Images\Fotos\desconocido.png" />
     <None Remove="Images\Fotos\usuario01.png" />
     <None Remove="Images\Fotos\usuario02.png" />
     <None Remove="Images\Fotos\usuario03.png" />
@@ -29,6 +31,7 @@
     <None Remove="Images\Fotos\usuario07.png" />
     <None Remove="Images\hamburger_icon.png" />
     <None Remove="Images\icons8-employee-100-2.png" />
+    <None Remove="Images\icons8-employee-100-3.png" />
     <None Remove="Images\icons8-employee-100-4.png" />
     <None Remove="Images\icons8-employee-100-6.png" />
     <None Remove="Images\icons8-employee-100.png" />
@@ -43,6 +46,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Images\Fotos\desconocida.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\Fotos\desconocido.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Images\Fotos\usuario01.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -117,6 +126,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\icons8-employee-100-2.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icons8-employee-100-3.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\icons8-employee-100-4.png">
