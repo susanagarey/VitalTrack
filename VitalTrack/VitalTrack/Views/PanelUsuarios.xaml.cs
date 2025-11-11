@@ -51,11 +51,13 @@ namespace VitalTrack.Views
             txtEmailUsuario.Text = usuario.Email;
             txtCreadoUsuario.Text = usuario.CreadoEn.ToString();
             txtUltimoAccesoUsuario.Text = usuario.UltimoAcceso.ToString();
-            fotoUsuario.Source = new BitmapImage(new Uri("/Images/Fotos/" + usuario.Foto, UriKind.Relative));
+            
+            fotoUsuario.Source = new BitmapImage(new Uri("/Images/Fotos/" + (usuario.Foto ?? ("desconocido.png")), UriKind.Relative));
         }
 
         private void btnAlta_Click(object sender, RoutedEventArgs e)
         {
+            usuarioGlobal = (Usuario)gridUsuarios.SelectedItem;
             VentanaNuevoUsuario ventana = new VentanaNuevoUsuario();
             ventana.ShowDialog();
 

@@ -27,5 +27,10 @@ namespace VitalTrack
             lblNombreVentana.Content = "Listado usuarios";
             DataContext = new UsuariosViewModel();
         }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

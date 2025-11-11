@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Alta Usuario"
         Height="400" 
-        Width="600" 
+        Width="800" 
         WindowStartupLocation="CenterScreen"
         FontSize="18" 
         FontWeight="Bold"
@@ -33,31 +33,34 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Content="Alta usuario"  FontSize="26" Grid.Column="0" Height="42" Width="157" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="48,-1,0,0"/>
+        <Label Content="Alta usuario"  FontSize="26" Grid.Column="0" Height="42" Width="156" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="322,-4,0,0" Grid.ColumnSpan="2"/>
 
-        <Label Content="Nombre usuario"  Grid.Column="1" Height="34" Width="157" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
-        <TextBox x:Name="txtCuentaUsuario" Grid.Row="0" Grid.Column="1" TextWrapping="Wrap" Margin="172,8,10,10" />
+        <Label Content="Usuario" Height="34" Width="94" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="txtCuentaUsuario"  FontSize="16"  Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Margin="123,9,10,9" />
+
+        <Label Content="Contraseña" Height="34" Width="108" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,0" Grid.Column="1" Grid.Row="2"/>
+        <PasswordBox x:Name="txtContrasena"  FontSize="16"  Grid.Row="2" Grid.Column="1"  Margin="123,8,10,10" />
 
         <Label Content="Nombre"  Grid.Row="1"  Grid.Column="0" Height="34" Width="105" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
-        <TextBox x:Name="txtNombreUsuario" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtNombreUsuario" FontSize="16"  Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
 
         <Label Content="Apellidos"  Grid.Row="2" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtApellidosUsuario" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtApellidosUsuario" FontSize="16"  Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
 
         <Label Content="Teléfono"  Grid.Row="3"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtTelefonoUsuario" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtTelefonoUsuario" FontSize="16"  Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
 
         <Label Content="Email"  Grid.Row="4"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtEmailUsuario" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
+        <TextBox x:Name="txtEmailUsuario" FontSize="16"  Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
 
         <Label Content="Fecha alta"  Grid.Row="5"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <DatePicker x:Name="txtCreadoUsuario" Grid.Row="5" Grid.Column="0" Width="170" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="120,12,0,0" RenderTransformOrigin="0.644,0.501" Text="Fecha alta" SelectedDateFormat="Short" />
+        <DatePicker x:Name="txtCreadoUsuario" Grid.Row="5" Grid.Column="0" Width="270" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="120,12,0,0" RenderTransformOrigin="0.644,0.501" Text="Fecha alta" SelectedDateFormat="Short" />
 
         <Label Content="Foto"  Grid.Row="6"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <Button x:Name="btnCargarFoto" Grid.Row="6" Grid.Column="0" Content="Cargar foto" Height="30" Margin="120,10,10,8" Click="btnCargarFoto_Click"/>
 
         <!-- Foto usuario -->
-        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/desconocido.png" />
+        <Image x:Name="fotoUsuario"  Grid.Row="3"  Grid.Column="1"  Grid.RowSpan="4" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="0,10,0,10" Source="/Images/Fotos/desconocido.png" />
 
 
         <Grid Grid.Row="8" Grid.ColumnSpan="3">
@@ -65,7 +68,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="10,0,10,0" Name="btnGuardar" Content="Guardar" FontSize="18" FontWeight="Bold" Height="33" VerticalAlignment="Center" />
+            <Button Margin="10,0,10,0" Name="btnGuardar" Content="Guardar" FontSize="18" FontWeight="Bold" Height="33" VerticalAlignment="Center" Click="btnGuardar_Click" />
             <Button Margin="10,5,10,5" Name="btnSalir" Content="Salir sin guardar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnSalir_Click"/>
         </Grid>
     </Grid>
