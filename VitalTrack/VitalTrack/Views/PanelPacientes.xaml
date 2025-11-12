@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -50,31 +50,31 @@
         <TextBox x:Name="txtDNIPaciente" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Nacimiento"  Grid.Row="4" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,6" />
-        <TextBox x:Name="txtFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
 
         <Label Content="Sexo"  Grid.Row="3" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
-        <TextBox x:Name="txtSexoPaciente" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <TextBox x:Name="txtSexoPaciente" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
 
         <Label Content="Teléfono"  Grid.Row="4"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtTelefonoUsuario" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <TextBox x:Name="txtTelefonoPaciente" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
 
         <Label Content="Email"  Grid.Row="5"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtEmailUsuario" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <TextBox x:Name="txtEmailPaciente" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
 
         <Label Content="Dirección"  Grid.Row="5" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
-        <TextBox x:Name="txtDirecciónUsuario" Grid.Row="5" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <TextBox x:Name="txtDireccionPaciente" Grid.Row="5" TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Observaciones"  Grid.Row="6" Grid.Column="0"  Height="34" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txObservacionesUsuario" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="147,6,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <TextBox x:Name="txtObservacionesPaciente" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="147,6,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
         <Label Content="Creador" Grid.Row="0" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <TextBox x:Name="txtCreadorPaciente"  Grid.Row="0" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Alta sist."  Grid.Row="1"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtAltaEnSistemaPaciente" IsReadOnly="True" Grid.Row="1" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpAltaEnSistemaPaciente"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long"  />
 
         <Label Content="Última act."  Grid.Row="2"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtActualizacionPaciente" IsReadOnly="True" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpActualizacionPaciente"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
 
         <DataGrid Grid.Row="8"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,10,0,46" Grid.RowSpan="3" SelectionChanged="gridPacientes_SelectionChanged" >
             <DataGrid.Columns>
@@ -102,9 +102,9 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="10,10,10,10" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
-            <Button Margin="10,10,10,10" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
-            <Button Margin="10,10,10,10" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
+            <Button Margin="10,5,10,4" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
+            <Button Margin="10,5,10,4" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
+            <Button Margin="10,5,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
         </Grid>
 
 

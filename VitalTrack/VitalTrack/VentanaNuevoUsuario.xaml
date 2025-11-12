@@ -54,7 +54,7 @@
         <TextBox x:Name="txtEmailUsuario" FontSize="16"  Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
 
         <Label Content="Fecha alta"  Grid.Row="5"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <DatePicker x:Name="txtCreadoUsuario" Grid.Row="5" Grid.Column="0" Width="270" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="120,12,0,0" RenderTransformOrigin="0.644,0.501" Text="Fecha alta" SelectedDateFormat="Short" />
+        <DatePicker x:Name="dpCreadoUsuario" Grid.Row="5" Grid.Column="0" Width="270" VerticalAlignment="Top" HorizontalAlignment="Left"  Margin="120,12,0,0" RenderTransformOrigin="0.644,0.501" Text="Fecha alta" SelectedDateFormat="Short" />
 
         <Label Content="Foto"  Grid.Row="6"  Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <Button x:Name="btnCargarFoto" Grid.Row="6" Grid.Column="0" Content="Cargar foto" Height="30" Margin="120,10,10,8" Click="btnCargarFoto_Click"/>
@@ -69,7 +69,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Button Margin="10,0,10,0" Name="btnGuardar" Content="Guardar" FontSize="18" FontWeight="Bold" Height="33" VerticalAlignment="Center" Click="btnGuardar_Click" />
-            <Button Margin="10,5,10,5" Name="btnSalir" Content="Salir sin guardar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnSalir_Click"/>
+            <Button Margin="10,5,10,5" Name="btnSalir" Content="Salir" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnSalir_Click"/>
         </Grid>
     </Grid>
 </Window>

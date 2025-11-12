@@ -173,7 +173,7 @@ namespace VitalTrack
             txtEmailUsuario.Clear();
             txtTelefonoUsuario.Clear();
             fotoUsuario.Source = bitmapDesconocido;
-            txtCreadoUsuario.SelectedDate = DateTime.Today;
+            dpCreadoUsuario.SelectedDate = DateTime.Today;
     } 
            
         // Funciones auxiliares
