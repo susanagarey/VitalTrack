@@ -3,28 +3,48 @@
   "WorkspaceRootPath": "C:\\CODIGO\\SUSANA\\VitalTrack\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\ventananuevousuario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\ventananuevousuario.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelconstantes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelconstantes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\ventananuevousuario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\ventananuevousuario.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelconstantes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelconstantes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelusuarios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelusuarios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\viewmodels\\constantesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\viewmodels\\constantesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\viewmodels\\alertasviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\viewmodels\\alertasviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelusuarios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelusuarios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelpacientes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelpacientes.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\models\\generated\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\models\\generated\\paciente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelpacientes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelpacientes.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelusuarios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelusuarios.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,9 +53,22 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 267,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 450,
+          "SelectedChildIndex": 3,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "VitalTrack\\MainWindow.xaml",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml",
+              "RelativeToolTip": "VitalTrack\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-10T12:38:50.086Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
@@ -47,31 +80,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "VitalTrack\\MainWindow.xaml",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml",
-              "RelativeToolTip": "VitalTrack\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-10T12:38:50.086Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "VitalTrack\\MainWindow.xaml.cs",
               "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml.cs",
               "RelativeToolTip": "VitalTrack\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAADsAAAAAAAAAAAAvwEkAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T19:05:48.232Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "PanelUsuarios.xaml",
               "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml",
               "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelUsuarios.xaml",
@@ -83,40 +104,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "PanelUsuarios.xaml.cs",
               "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml.cs",
               "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelUsuarios.xaml.cs",
               "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml.cs",
               "RelativeToolTip": "VitalTrack\\Views\\PanelUsuarios.xaml.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAAgwDYAAABqAAAAAAAAAA==",
+              "ViewState": "AgIAACoAAAAAAAAAAAAowBwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-10T22:55:59.723Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "VentanaNuevoUsuario.xaml.cs",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\VentanaNuevoUsuario.xaml.cs",
-              "RelativeDocumentMoniker": "VitalTrack\\VentanaNuevoUsuario.xaml.cs",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\VentanaNuevoUsuario.xaml.cs",
-              "RelativeToolTip": "VitalTrack\\VentanaNuevoUsuario.xaml.cs",
-              "ViewState": "AgIAALwAAAAAAAAAAAAgwK0AAAAfAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "AlertasViewModel.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\ViewModels\\AlertasViewModel.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\ViewModels\\AlertasViewModel.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\ViewModels\\AlertasViewModel.cs",
+              "RelativeToolTip": "VitalTrack\\ViewModels\\AlertasViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T23:34:37.282Z",
+              "WhenOpened": "2025-11-12T11:11:37.951Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PanelConstantes.xaml",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelConstantes.xaml",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelConstantes.xaml",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelConstantes.xaml",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelConstantes.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-12T11:14:36.643Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "VentanaNuevoUsuario.xaml",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\VentanaNuevoUsuario.xaml",
-              "RelativeDocumentMoniker": "VitalTrack\\VentanaNuevoUsuario.xaml",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\VentanaNuevoUsuario.xaml",
-              "RelativeToolTip": "VitalTrack\\VentanaNuevoUsuario.xaml",
+              "Title": "PanelConstantes.xaml.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelConstantes.xaml.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelConstantes.xaml.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelConstantes.xaml.cs",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelConstantes.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T11:14:42.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ConstantesViewModel.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\ViewModels\\ConstantesViewModel.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\ViewModels\\ConstantesViewModel.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\ViewModels\\ConstantesViewModel.cs",
+              "RelativeToolTip": "VitalTrack\\ViewModels\\ConstantesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T11:15:27.749Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 85,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Paciente.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Models\\Generated\\Paciente.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\Models\\Generated\\Paciente.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Models\\Generated\\Paciente.cs",
+              "RelativeToolTip": "VitalTrack\\Models\\Generated\\Paciente.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAmwCUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T10:38:24.186Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PanelPacientes.xaml",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelPacientes.xaml",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelPacientes.xaml",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelPacientes.xaml",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelPacientes.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-10T23:14:41.223Z",
+              "WhenOpened": "2025-11-12T09:44:46.385Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "PanelPacientes.xaml.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelPacientes.xaml.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelPacientes.xaml.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelPacientes.xaml.cs",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelPacientes.xaml.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAAQwCMAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T10:46:02.37Z",
               "EditorCaption": ""
             }
           ]

@@ -39,6 +39,7 @@
     <None Remove="Images\icons8-exit-100-9.png" />
     <None Remove="Images\icons8-job-100-5.png" />
     <None Remove="Images\icons8-job-100-6.png" />
+    <None Remove="Images\icons8-permission-50.png" />
     <None Remove="Images\icons8-salary-100-4.png" />
     <None Remove="Images\icons8-trees-100-12.png" />
     <None Remove="Images\line_chart.png" />
@@ -110,13 +111,7 @@
     <Resource Include="Images\delivery_icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Images\Devices_Image - copia.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
     <Resource Include="Images\Devices_Image.png">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Images\discount_icon - copia.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Images\discount_icon.png">
@@ -155,9 +150,6 @@
     <Resource Include="Images\icons8-trees-100-12.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Images\icons8-salary-100-4.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
@@ -166,8 +158,12 @@
     </Resource>
     <Resource Include="Images\sales_icon.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Resource>
+    </Resource>	
+    <Resource Include="Images\icons8-permission-50.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>		
   </ItemGroup>
+
 
   <ItemGroup>
     <Folder Include="Data\" />

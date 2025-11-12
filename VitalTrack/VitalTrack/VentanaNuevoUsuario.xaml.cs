@@ -31,7 +31,6 @@ namespace VitalTrack
             InitializeComponent();
         }
 
-        VitaltrackContext db = new VitaltrackContext();
         String nombreArchivoFoto;
         private void btnCargarFoto_Click(object sender, RoutedEventArgs e)
         {
@@ -101,19 +100,21 @@ namespace VitalTrack
             }
 
             // Comprobar que no existe ya el nombre de usuario
-           if (db.Usuarios.FirstOrDefault(u => u.NombreUsuario == txtCuentaUsuario.Text.Trim()) != null)
+            using (VitaltrackContext db = new VitaltrackContext())
             {
-                MessageBox.Show("El nombre de usuario ya está en uso.", "Nombre de usuario existente", MessageBoxButton.OK, MessageBoxImage.Warning);
-                txtCuentaUsuario.Focus();
-                return;
-            }
+                if (db.Usuarios.FirstOrDefault(u => u.NombreUsuario == txtCuentaUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("El nombre de usuario ya está en uso.", "Nombre de usuario existente", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txtCuentaUsuario.Focus();
+                    return;
+                }
 
-            // Comprobar que no existe otro usuario con ese email
-           if (db.Usuarios.FirstOrDefault(u => u.Email == txtEmailUsuario.Text.Trim()) != null)
-            {
-                MessageBox.Show("Este email ya está en uso.", "Email ya utilizado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                txtEmailUsuario.Focus();
-                return;
+                if (db.Usuarios.FirstOrDefault(u => u.Email == txtEmailUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("Este email ya está en uso.", "Email ya utilizado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    txtEmailUsuario.Focus();
+                    return;
+                }
             }
 
             // Validar teléfono español con regex
@@ -149,16 +150,20 @@ namespace VitalTrack
 
             // Guardar en base de datos
             Usuario usuario = new Usuario();
-            usuario.NombreUsuario =  txtCuentaUsuario.Text.Trim();
+            usuario.NombreUsuario = txtCuentaUsuario.Text.Trim();
             usuario.HashPassword = CalcularHashSha256(txtContrasena.Password);
-            usuario.Nombre = txtNombreUsuario.Text.Trim();  
+            usuario.Nombre = txtNombreUsuario.Text.Trim();
             usuario.Apellidos = txtApellidosUsuario.Text.Trim();
             usuario.Telefono = txtTelefonoUsuario.Text.Trim();
             usuario.Email = txtEmailUsuario.Text.Trim();
             usuario.Foto = nombreArchivoFoto;
-            
-            db.Usuarios.Add(usuario);
-            db.SaveChanges();
+
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                db.Usuarios.Add(usuario);
+                db.SaveChanges();
+            }
+
 
             // Borrar campos, tras éxito en operación:
             txtCuentaUsuario.Clear();
@@ -166,11 +171,11 @@ namespace VitalTrack
             txtNombreUsuario.Clear();
             txtApellidosUsuario.Clear();
             txtEmailUsuario.Clear();
-            txtTelefonoUsuario.Clear(); 
-            fotoUsuario.Source = bitmapDesconocido; 
+            txtTelefonoUsuario.Clear();
+            fotoUsuario.Source = bitmapDesconocido;
             txtCreadoUsuario.SelectedDate = DateTime.Today;
-        }
-
+    } 
+           
         // Funciones auxiliares
         private static string CalcularHashSha256(string texto)
         {

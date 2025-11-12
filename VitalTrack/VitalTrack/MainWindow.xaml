@@ -8,13 +8,13 @@
         xmlns:viewmodels="clr-namespace:VitalTrack.ViewModels" 
         mc:Ignorable="d"
         Title="VitalTrack"  Name="VentanaPrincipal" 
-        Height="600" 
+        Height="800" 
         Width="1200" 
         WindowStartupLocation="CenterScreen"
-        FontSize="20" 
+        FontSize="22" 
         FontWeight="Bold"
         Background="#ff91C4C3"
-        Icon="Images/analytics_icon.png" ResizeMode="NoResize">
+        Icon="Images/analytics_icon.png" ResizeMode="NoResize" Loaded="VentanaPrincipal_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -42,133 +42,170 @@
         <!-- Título panel datos -->
         <Label x:Name="lblNombreVentana" Grid.Column="1"   FontSize="30" Content="VitalTrack App" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <StackPanel Grid.Row="1" Margin="0,2,0,0">
-            <Button Grid.Row="1" x:Name="btnUsuarios" Width="250" Height="60" HorizontalAlignment="Left" Click="btnUsuarios_Click">
+        <StackPanel Grid.Row="1" Margin="0,0,0,0">
+            <Button Grid.Row="1" x:Name="btnUsuarios" Width="250" Height="80" HorizontalAlignment="Left" Click="btnUsuarios_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="UsuarioImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-employee-100-6.png"/>
-                    <TextBlock Text="Usuarios" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,12,0,0"/>
+                    <Image x:Name="UsuarioImage" HorizontalAlignment="Center" VerticalAlignment="Top" Height="auto" Width="auto" Margin="0,5,0,0" Source="Images/icons8-employee-100-6.png"/>
+                    <TextBlock Text="Usuarios" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Margin="0,2,0,0">
-            <Button Grid.Row="2" x:Name="btnRoles" Width="250" Height="60" HorizontalAlignment="Left">
-                <Grid Width="230">
+            <Button Grid.Row="2" x:Name="btnRoles" Width="250" Height="80" HorizontalAlignment="Left" Click="btnRoles_Click">
+                <Grid Width="230" Height="77">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="RolesImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,15"  Source="Images/icons8-employee-100.png"/>
-                    <TextBlock Text="Roles" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="54,0,0,0"/>
+                    <Image x:Name="RolesImage" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="auto"  Source="Images/icons8-employee-100.png"/>
+                    <TextBlock Text="Roles" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="143"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="3" Margin="0,2,0,0">
-            <Button Grid.Row="3" x:Name="btnPacientes" Width="250" Height="60" HorizontalAlignment="Left" >
+            <Button Grid.Row="3" x:Name="btnPacientes" Width="250" Height="80" HorizontalAlignment="Left" Click="btnPacientes_Click" >
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="PacientesImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-employee-100-2.png"/>
-                    <TextBlock Text="Pacientes" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="30,0,0,0"/>
+                    <Image x:Name="PacientesImage" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="56" Source="Images/icons8-employee-100-2.png" RenderTransformOrigin="0.746,0.579"/>
+                    <TextBlock Text="Pacientes" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="-0.397,0.418" Width="138"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="4" Margin="0,2,0,0">
-            <Button Grid.Row="4" x:Name="btnConstantes" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="4" x:Name="btnConstantes" Width="250" Height="80" HorizontalAlignment="Left" Click="btnConstantes_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="ConstantesImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,10,10" Source="Images/sales_icon.png"/>
-                    <TextBlock Text="Constantes" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="12,12,0,0"/>
+                    <Image x:Name="ConstantesImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="62" Width="72" Source="Images/sales_icon.png" Grid.ColumnSpan="2"/>
+                    <TextBlock Text="Constantes" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Width="141"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="5" Margin="0,2,0,0">
-            <Button Grid.Row="5" x:Name="btnGraficas" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="5" x:Name="btnGraficas" Width="250" Height="80" HorizontalAlignment="Left" Click="btnGraficas_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="GraficasImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/line_chart.png"/>
-                    <TextBlock Text="Gráficas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" RenderTransformOrigin="1.151,0.589" Margin="36,0,0,0"/>
+                    <TextBlock Text="Gráficas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.151,0.589" Width="149" Margin="0,21,0,0"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="6" Margin="0,2,0,0">
-            <Button Grid.Row="6" x:Name="btnAlertas" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="6" x:Name="btnAlertas" Width="250" Height="80" HorizontalAlignment="Left" Click="btnAlertas_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="TareaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-job-100-5.png"/>
-                    <TextBlock Text="Alertas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="41,12,0,0"/>
+                    <TextBlock Text="Alertas" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,21,0,0" Width="134"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="7" Margin="0,2,0,0">
-            <Button Grid.Row="7" x:Name="btnAuditoria" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="7" x:Name="btnAuditoria" Width="250" Height="80" HorizontalAlignment="Left" Click="btnAuditoria_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="35*"/>
-                        <ColumnDefinition Width="53*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="AuditoriaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-salary-100-4.png"/>
-                    <TextBlock Text="Auditoria" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="3" Margin="40,10,0,0"/>
+                    <Image x:Name="AuditoriaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="/Images/icons8-permission-50.png"/>
+                    <TextBlock Text="Auditoria" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Width="125"/>
                 </Grid>
             </Button>
         </StackPanel>
 
         <StackPanel Grid.Row="8" Margin="0,2,0,0">
-            <Button Grid.Row="8" x:Name="btnLogOut" Width="250" Height="60" HorizontalAlignment="Left">
+            <Button Grid.Row="8" x:Name="btnLogOut" Width="250" Height="80" HorizontalAlignment="Left">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="LogoutImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-9.png"/>
-                    <TextBlock Text="Cerrar sesión" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="31,10,0,0"/>
+                    <TextBlock Text="Cerrar sesión" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,21,0,0" Width="141"/>
                 </Grid>
             </Button>
         </StackPanel>
+
         <StackPanel Grid.Row="9" Margin="0,2,0,0">
-            <Button Grid.Row="9" x:Name="btnCerrar" Width="250" Height="60" HorizontalAlignment="Left" Click="btnCerrar_Click">
+            <Button Grid.Row="9" x:Name="btnCerrar" Width="250" Height="80" HorizontalAlignment="Left" Click="btnCerrar_Click">
                 <Grid Width="230">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto"/>
-                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="CerrarImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-4.png"/>
-                    <TextBlock Text="Cerrar App" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="34,10,0,0"/>
+                    <TextBlock Text="Cerrar App" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0"/>
                 </Grid>
             </Button>
         </StackPanel>
     </Grid>
 
-     <!--Data bindings--> 
+    <!--Data bindings-->
     <Window.Resources>
+        
         <DataTemplate x:Name="UsuariosTemplate" DataType="{x:Type viewmodels:UsuariosViewModel}">
             <views:PanelUsuarios>
-                
+
             </views:PanelUsuarios>
         </DataTemplate>
+        
+        <DataTemplate x:Name="PacientesTemplate" DataType="{x:Type viewmodels:PacientesViewModel}">
+            <views:PanelPacientes>
+
+            </views:PanelPacientes>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="RolesTemplate" DataType="{x:Type viewmodels:RolesViewModel}">
+            <views:PanelRoles>
+
+            </views:PanelRoles>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="ConstantesTemplate" DataType="{x:Type viewmodels:ConstantesViewModel}">
+            <views:PanelConstantes>
+
+            </views:PanelConstantes>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="AlertasTemplate" DataType="{x:Type viewmodels:AlertasViewModel}">
+            <views:PanelAlertas>
+
+            </views:PanelAlertas>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="AuditoriaTemplate" DataType="{x:Type viewmodels:AuditoriaViewModel}">
+            <views:PanelAuditoria>
+
+            </views:PanelAuditoria>
+        </DataTemplate>
+        
+        <DataTemplate x:Name="GraficasTemplate" DataType="{x:Type viewmodels:GraficasViewModel}">
+            <views:PanelGraficas>
+
+            </views:PanelGraficas>
+        </DataTemplate>
+ 
     </Window.Resources>
-    
-    
+
+
 </Window>

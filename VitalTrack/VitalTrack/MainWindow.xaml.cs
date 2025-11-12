@@ -21,16 +21,57 @@ namespace VitalTrack
         {
             InitializeComponent();
         }
+        private void VentanaPrincipal_Loaded(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gestión pacientes";
+            DataContext = new PacientesViewModel();
+        }
 
         private void btnUsuarios_Click(object sender, RoutedEventArgs e)
         {
-            lblNombreVentana.Content = "Listado usuarios";
+            lblNombreVentana.Content = "Gestión usuarios";
             DataContext = new UsuariosViewModel();
         }
 
         private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void btnPacientes_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gestión pacientes";
+            DataContext = new PacientesViewModel();
+        }
+
+        private void btnConstantes_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gestión constantes";
+            DataContext = new ConstantesViewModel();
+        }
+
+        private void btnGraficas_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gráficas";
+            DataContext = new GraficasViewModel();
+        }
+
+        private void btnAlertas_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gestión alertas";
+            DataContext = new AlertasViewModel();
+        }
+
+        private void btnAuditoria_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Auditoría";
+            DataContext = new AuditoriaViewModel();
+        }
+
+        private void btnRoles_Click(object sender, RoutedEventArgs e)
+        {
+            lblNombreVentana.Content = "Gestión roles";
+            DataContext = new RolesViewModel();
         }
     }
 }
