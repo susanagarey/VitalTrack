@@ -16,7 +16,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -60,7 +60,7 @@
         <TextBox x:Name="txtUltimoAccesoUsuario" IsReadOnly="True" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="120,10,10,10" />
 
         <!-- Foto usuario -->
-        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/desconocido.png" />
+        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="1"  Grid.RowSpan="6" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/usuario01.png" />
 
         <DataGrid Grid.Row="7"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="gridUsuarios_SelectionChanged">
             <DataGrid.Columns>

@@ -5,8 +5,57 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
-            
+        <!-- Estructura global del control -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+
+        <DataGrid Grid.Row="0"  FontSize="12" x:Name="gridConstantes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding UmbralId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="PacienteID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
+
+                <DataGridTextColumn Header="SisMin" Binding="{Binding MinTensionSistolica}" Width="*"/>
+                <DataGridTextColumn Header="SisMax" Binding="{Binding MaxTensionSistolica}" Width="*"/>
+                <DataGridTextColumn Header="DisMin" Binding="{Binding MinTensionDiastolica}" Width="*" />
+                <DataGridTextColumn Header="DisMax" Binding="{Binding MaxTensionDiastolica}" Width="*" />
+
+                <DataGridTextColumn Header="CardMin" Binding="{Binding MinFrecuenciaCardiaca}" Width="*"/>
+                <DataGridTextColumn Header="CardMax" Binding="{Binding MaxFrecuenciaCardiaca}" Width="*"/>
+                <DataGridTextColumn Header="SpO2Min" Binding="{Binding MinSpo2}" Width="*"/>
+                <DataGridTextColumn Header="SpO2Max" Binding="{Binding MaxSpo2}" Width="*"/>
+                <DataGridTextColumn Header="Tmin" Binding="{Binding MinTemperaturaC}" Width="*"/>
+                <DataGridTextColumn Header="Tmax" Binding="{Binding MaxTemperaturaC}" Width="*"/>
+                <DataGridTextColumn Header="GlucMin" Binding="{Binding MinGlucosa}" Width="*"/>
+                <DataGridTextColumn Header="GlucMax" Binding="{Binding MaxGlucosa}" Width="*"/>
+
+                
+                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Header="Creador" Binding="{Binding CreadoPor}" Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*"  Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <DataGrid Grid.Row="1"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"/>
+                <DataGridTextColumn Header="Último Acceso" Binding="{Binding UltimoAcceso}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
     </Grid>
 </UserControl>

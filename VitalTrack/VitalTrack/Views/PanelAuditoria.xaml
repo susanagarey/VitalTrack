@@ -5,8 +5,46 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
-            
+        <!-- Estructura global del control -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Rol"  Grid.Row="0"  Grid.Column="0"  Height="34" Width="94" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtRol"  FontSize="16"  Grid.Row="0" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,9" />
+
+        <Label Content="Usuario"  Grid.Row="1"  Grid.Column="0"  Height="34" Width="94" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtCuentaUsuario"  FontSize="16"  Grid.Row="1" TextWrapping="Wrap" Margin="98,10,10,8" />
+
+        <Label Content="Nombre"  Grid.Row="2"  Grid.Column="0" Height="34" Width="105" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBox x:Name="txtNombreUsuario" FontSize="16"  Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
+
+        <Label Content="Apellidos"  Grid.Row="3" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
+        <TextBox x:Name="txtApellidosUsuario" FontSize="16"  Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="98,10,10,10" />
+
+        <!-- Foto usuario -->
+        <Image x:Name="fotoUsuario"  Grid.Row="0"  Grid.Column="1"  Grid.RowSpan="4" HorizontalAlignment="Center" Height="auto" Width="auto" Margin="10,10,10,10" Source="/Images/Fotos/usuario01.png" />
+
+
+        <DataGrid Grid.Row="4"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding AuditoriaId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Usuario" Binding="{Binding UsuarioId}" Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Header="Usuario" Binding="{Binding UsuarioId}" Width="*"  />
+                <DataGridTextColumn Header="Accion" Binding="{Binding Accion}" Width="*"/>
+                <DataGridTextColumn Header="Detalles" Binding="{Binding Detalles}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Fecha crea." Binding="{Binding CreadoEn}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>

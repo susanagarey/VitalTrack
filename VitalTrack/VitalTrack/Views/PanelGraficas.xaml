@@ -5,8 +5,36 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+                     d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
-            
+        <!-- Estructura global del control -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Biometría de Usuario"  Grid.Column="0" Height="34" Width="248" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
+        <TextBox x:Name="txtCuentaUsuario" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="0,8,10,10" Grid.ColumnSpan="2" HorizontalAlignment="Right" Width="780" />
+
+        <DataGrid Grid.Row="2"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
+                <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
+                <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
+                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"/>
+                <DataGridTextColumn Header="Último Acceso" Binding="{Binding UltimoAcceso}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </UserControl>
