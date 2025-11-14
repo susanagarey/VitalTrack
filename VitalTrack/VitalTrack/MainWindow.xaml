@@ -128,7 +128,7 @@
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Image x:Name="AuditoriaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="/Images/icons8-permission-50.png"/>
-                    <TextBlock Text="Auditoria" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Width="125"/>
+                    <TextBlock Text="Auditoría" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Width="125"/>
                 </Grid>
             </Button>
         </StackPanel>

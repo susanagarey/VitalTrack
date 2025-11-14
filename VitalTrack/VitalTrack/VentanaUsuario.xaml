@@ -1,4 +1,4 @@
-﻿<Window x:Class="VitalTrack.VentanaNuevoUsuario"
+﻿<Window x:Class="VitalTrack.VentanaUsuario"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -35,7 +35,7 @@
         </Grid.ColumnDefinitions>
 
 
-        <Label Content="Alta usuario"  FontSize="26" Grid.Column="0" Height="42" Width="156" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="322,-4,0,0" Grid.ColumnSpan="3"/>
+        <Label Content="Alta y edición de usuario"  FontSize="26" Grid.Column="0" Height="42" Width="319" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="255,-4,0,0" Grid.ColumnSpan="4"/>
 
         <Label Content="Usuario" Height="34" Width="94" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2"/>
         <TextBox x:Name="txtCuentaUsuario"  FontSize="16"  Grid.Row="1" Grid.Column="3" TextWrapping="Wrap" Margin="26,9,10,9" />

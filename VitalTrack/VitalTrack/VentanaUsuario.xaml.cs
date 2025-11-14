@@ -22,63 +22,18 @@ using System.Security.Cryptography;
 namespace VitalTrack
 {
     /// <summary>
-    /// Interaction logic for VentanaNuevoUsuario.xaml
+    /// Interaction logic for VentanaUsuario.xaml
     /// </summary>
-    public partial class VentanaNuevoUsuario : Window
+    public partial class VentanaUsuario : Window
     {
-        public VentanaNuevoUsuario()
+        String? nombreArchivoFoto;
+        public Usuario ultimoUsuarioCreado;
+
+        public VentanaUsuario()
         {
             InitializeComponent();
         }
 
-        String nombreArchivoFoto;
-        private void btnCargarFoto_Click(object sender, RoutedEventArgs e)
-        {
-            var dialogo = new OpenFileDialog
-            {
-                Title = "Seleccione un fichero gráfico",
-                Filter = "Imágenes (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg|PNG (*.png)|*.png|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg"
-            };
-
-            if (dialogo.ShowDialog() == true)
-            {
-                string trayectoria = dialogo.FileName;
-
-                try
-                {
-                    string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-                    string directoryDestino = Path.Combine(baseDir, "Images", "Fotos");
-                    Directory.CreateDirectory(directoryDestino);
-
-                    string nombreArchivo = Path.GetFileName(trayectoria);
-                    string trayectoriaDestino = Path.Combine(directoryDestino, nombreArchivo);
-
-                    if (File.Exists(trayectoriaDestino))
-                    {
-                        string nombreSinExt = Path.GetFileNameWithoutExtension(nombreArchivo);
-                        string ext = Path.GetExtension(nombreArchivo);
-                        string unico = $"{nombreSinExt}_{DateTime.Now:yyyyMMdd_HHmmssfff}{ext}";
-                        trayectoriaDestino = Path.Combine(directoryDestino, unico);
-                    }
-
-                    File.Copy(trayectoria, trayectoriaDestino);
-
-                    var bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // para evitar un bloqueo en el archivo
-                    bitmap.UriSource = new Uri(trayectoriaDestino, UriKind.Absolute);
-                    bitmap.EndInit();
-                    bitmap.Freeze();
-
-                    fotoUsuario.Source = bitmap;
-                    nombreArchivoFoto = nombreArchivo;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"No se pudo copiar/mostrar la imagen.\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-        }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
@@ -87,13 +42,14 @@ namespace VitalTrack
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
+
             // Validar campos texto:
-            if ( txtCuentaUsuario.Text.Trim() == "" ||
-                 txtContrasena.Password.Trim() == "" ||
-                 txtNombreUsuario.Text.Trim() == "" ||
+            if ( txtCuentaUsuario.Text.Trim()    == "" ||
+                 txtContrasena.Password.Trim()   == "" ||
+                 txtNombreUsuario.Text.Trim()    == "" ||
                  txtApellidosUsuario.Text.Trim() == "" ||
-                 txtTelefonoUsuario.Text.Trim() == "" ||
-                 txtEmailUsuario.Text.Trim() == "" )
+                 txtTelefonoUsuario.Text.Trim()  == "" ||
+                 txtEmailUsuario.Text.Trim()     == "" )
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -117,7 +73,7 @@ namespace VitalTrack
                 }
             }
 
-            // Validar teléfono español con regex
+            // Validar teléfono español con regex (también se puede hacer con el evento PreviewTextInput)
             if (!esNumeroTelefonoValido(txtTelefonoUsuario.Text))
             {
                 MessageBox.Show("Introduzca un teléfono español válido (9 dígitos comenzando por 6, 7, 8 o 9; puede incluir prefijo +34/0034 y separadores espacio o guion).",
@@ -135,28 +91,34 @@ namespace VitalTrack
                 return;
             }
 
-            // Prepara una imagen para usuario sin foto
-            var bitmapDesconocido = new BitmapImage();
-            bitmapDesconocido.BeginInit();
-            bitmapDesconocido.CacheOption = BitmapCacheOption.OnLoad; // para evitar un bloqueo en el archivo
-            bitmapDesconocido.UriSource = new Uri("pack://application:,,,/Images/Fotos/desconocido.png", UriKind.Absolute);
-            bitmapDesconocido.EndInit();
-
-            if (fotoUsuario.Source == null)
+            // Imagen por defecto si no se ha cargado foto
+            var bitmap = new BitmapImage();
+            if (fotoUsuario.Source == null || string.IsNullOrWhiteSpace(nombreArchivoFoto))
             {
-                fotoUsuario.Source = bitmapDesconocido;
-                nombreArchivoFoto = "desconocido.png";
+                nombreArchivoFoto = App.FotoPorDefecto;
+                string trayectoriaDefecto = ObtenerTrayectoriaFoto(nombreArchivoFoto);
+                if ( !File.Exists(trayectoriaDefecto) )
+                {
+                    // Último recurso: pack URI 
+                    trayectoriaDefecto = "pack://application:,,,/Images/Fotos/" + App.FotoPorDefecto;
+                }
+
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.UriSource = new Uri(trayectoriaDefecto, UriKind.Absolute);
+                bitmap.EndInit();
+                fotoUsuario.Source = bitmap;
             }
 
             // Guardar en base de datos
-            Usuario usuario = new Usuario();
+            Usuario usuario       = new Usuario();
             usuario.NombreUsuario = txtCuentaUsuario.Text.Trim();
-            usuario.HashPassword = CalcularHashSha256(txtContrasena.Password);
-            usuario.Nombre = txtNombreUsuario.Text.Trim();
-            usuario.Apellidos = txtApellidosUsuario.Text.Trim();
-            usuario.Telefono = txtTelefonoUsuario.Text.Trim();
-            usuario.Email = txtEmailUsuario.Text.Trim();
-            usuario.Foto = nombreArchivoFoto;
+            usuario.HashPassword  = CalcularHashSha256(txtContrasena.Password);
+            usuario.Nombre        = txtNombreUsuario.Text.Trim();
+            usuario.Apellidos     = txtApellidosUsuario.Text.Trim();
+            usuario.Telefono      = txtTelefonoUsuario.Text.Trim();
+            usuario.Email         = txtEmailUsuario.Text.Trim();
+            usuario.Foto          = nombreArchivoFoto;
 
             using (VitaltrackContext db = new VitaltrackContext())
             {
@@ -164,6 +126,8 @@ namespace VitalTrack
                 db.SaveChanges();
             }
 
+            ultimoUsuarioCreado = usuario;
+            MessageBox.Show("Usuario creado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Borrar campos, tras éxito en operación:
             txtCuentaUsuario.Clear();
@@ -172,9 +136,9 @@ namespace VitalTrack
             txtApellidosUsuario.Clear();
             txtEmailUsuario.Clear();
             txtTelefonoUsuario.Clear();
-            fotoUsuario.Source = bitmapDesconocido;
+            fotoUsuario.Source = bitmap;
             dpCreadoUsuario.SelectedDate = DateTime.Today;
-    } 
+        } 
            
         // Funciones auxiliares
         private static string CalcularHashSha256(string texto)
@@ -191,6 +155,61 @@ namespace VitalTrack
             if (string.IsNullOrWhiteSpace(phone)) return false;
             var value = phone.Trim();
             return ExpresionRegularNumeroTelefonoValido().IsMatch(value);
+        }
+
+        private static string ObtenerTrayectoriaFoto(string? fileName)
+        {
+            if (string.IsNullOrWhiteSpace(fileName)) return string.Empty;
+            return Path.Combine(App.CarpetaFotos, fileName);
+        }
+
+        private void btnCargarFoto_Click(object sender, RoutedEventArgs e)
+        {
+            var dialogo = new OpenFileDialog
+            {
+                Title = "Seleccione un fichero gráfico",
+                Filter = "Imágenes (*.png;*.jpg;*.jpeg)|*.png;*.jpg;*.jpeg|PNG (*.png)|*.png|JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg"
+            };
+
+            if (dialogo.ShowDialog() == true)
+            {
+                string trayectoria = dialogo.FileName;
+
+                try
+                {
+                    string directorioDestino = App.CarpetaFotos;
+                    Directory.CreateDirectory(directorioDestino);
+
+                    string nombreArchivo = Path.GetFileName(trayectoria);
+                    string trayectoriaDestino = Path.Combine(directorioDestino, nombreArchivo);
+
+                    if (File.Exists(trayectoriaDestino))
+                    {
+                        // Si ya existe una foto con ese nombre, generar uno único
+                        string nombreSinExt = Path.GetFileNameWithoutExtension(nombreArchivo);
+                        string ext          = Path.GetExtension(nombreArchivo);
+                        string unico        = $"{nombreSinExt}_{DateTime.Now:yyyyMMdd_HHmmssfff}{ext}";
+                        nombreArchivo       = unico;
+                        trayectoriaDestino  = Path.Combine(directorioDestino, unico);
+                    }
+
+                    File.Copy(trayectoria, trayectoriaDestino);
+
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad; // para evitar un bloqueo en el archivo
+                    bitmap.UriSource = new Uri(trayectoriaDestino, UriKind.Absolute);
+                    bitmap.EndInit();
+                    bitmap.Freeze();
+
+                    fotoUsuario.Source = bitmap;
+                    nombreArchivoFoto = nombreArchivo;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"No se pudo copiar/mostrar la imagen.\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         // Patrón:
