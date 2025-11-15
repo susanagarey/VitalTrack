@@ -24,7 +24,6 @@ namespace VitalTrack.Views
         public PanelUsuarios()
         {
             InitializeComponent();
-
             RefrescarListaUsuarios();
         }
 
@@ -104,7 +103,6 @@ namespace VitalTrack.Views
             }
 
             MessageBoxResult result = MessageBox.Show("¿Estás seguro de que deseas dar de baja a este usuario?", "Confirmar baja", MessageBoxButton.YesNo);
-
             if (result == MessageBoxResult.Yes)
             {
                 using (VitaltrackContext db = new VitaltrackContext())

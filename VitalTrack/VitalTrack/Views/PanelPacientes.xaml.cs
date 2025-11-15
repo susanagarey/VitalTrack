@@ -16,58 +16,38 @@ namespace VitalTrack.Views
         public PanelPacientes()
         {
             InitializeComponent();
-
             RefrescarListaPacientes();
         }
 
-
         private void gridPacientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var pacienteSeleccionado = gridPacientes.SelectedItem as Paciente;
-            if (pacienteSeleccionado is not null)
-            {
-                pacienteSeleccionadoGlobal = pacienteSeleccionado;
-            }
-
-            pacienteSeleccionado = pacienteSeleccionado ?? pacienteSeleccionadoGlobal ?? gridPacientes.Items.OfType<Paciente>().FirstOrDefault(); ;
-          
-            if (pacienteSeleccionado is null)
+            pacienteSeleccionadoGlobal = (Paciente)gridPacientes.SelectedItem ?? gridPacientes.Items.OfType<Paciente>().FirstOrDefault() ;
+                     
+            if (pacienteSeleccionadoGlobal is null)
             {
                 // No hay nada seleccionado: 
                 return;
             }
 
-
-            Paciente? paciente;
+            // Recuperar de base datos datos actualizados del paciente seleccionado
             using (VitaltrackContext db = new VitaltrackContext())
             {
-                paciente = db.Pacientes
-                            .FirstOrDefault(u => u.PacienteId == pacienteSeleccionado.PacienteId);
+                Paciente paciente = db.Pacientes.Find(pacienteSeleccionadoGlobal.PacienteId);
+                txtPacienteID.Text                     = paciente.PacienteId.ToString();
+                txtActivo.Text                         = paciente.Activo.HasValue ? (paciente.Activo.Value ? "Sí" : "No") : "Desconocido";
+                txtNombrePaciente.Text                 = paciente.Nombre;
+                txtApellidosPaciente.Text              = paciente.Apellidos;
+                txtDNIPaciente.Text                    = paciente.Dni ?? "Desconocido";
+                txtDireccionPaciente.Text              = paciente.Direccion ?? "Desconocido";
+                txtObservacionesPaciente.Text          = paciente.Observaciones ?? "Ninguna";
+                txtTelefonoPaciente.Text               = paciente.Telefono ?? "Desconocido";
+                txtEmailPaciente.Text                  = paciente.Email ?? "Desconocido";
+                txtFechaNacimientoPaciente.Text        = paciente.FechaNacimiento.HasValue ? paciente.FechaNacimiento.Value.ToString("d") : "Desconocido";
+                txtSexoPaciente.Text                   = paciente.Sexo ?? "Desconocido";
+                txtCreadorPaciente.Text                = paciente.CreadoPor.HasValue ? (paciente.Nombre + " " + paciente.Apellidos) : "Desconocido";
+                txtAltaEnSistemaPaciente.Text          = paciente.CreadoEn.ToString();
+                txtActualizacionPaciente.Text          = paciente.ActualizadoEn.ToString();
             }
-
-            txtPacienteID.Text                     = paciente.PacienteId.ToString();
-            txtActivo.Text                         = paciente.Activo.HasValue ? (paciente.Activo.Value ? "Sí" : "No") : "Desconocido";
-            txtNombrePaciente.Text                 = paciente.Nombre;
-            txtApellidosPaciente.Text              = paciente.Apellidos;
-            txtDNIPaciente.Text                    = paciente.Dni ?? "Desconocido";
-            txtDireccionPaciente.Text              = paciente.Direccion ?? "Desconocido";
-            txtObservacionesPaciente.Text          = paciente.Observaciones ?? "Ninguna";
-            txtTelefonoPaciente.Text               = paciente.Telefono ?? "Desconocido";
-            txtEmailPaciente.Text                  = paciente.Email ?? "Desconocido";
-            txtFechaNacimientoPaciente.Text        = paciente.FechaNacimiento.HasValue ? paciente.FechaNacimiento.Value.ToString("d") : "Desconocido";
-            txtSexoPaciente.Text                   = paciente.Sexo ?? "Desconocido";
-            txtCreadorPaciente.Text                = paciente.CreadoPor.HasValue ? (paciente.Nombre + " " + paciente.Apellidos) : "Desconocido";
-            txtAltaEnSistemaPaciente.Text          = paciente.CreadoEn.ToString();
-            txtActualizacionPaciente.Text          = paciente.ActualizadoEn.ToString();
-
-
-            using (VitaltrackContext db = new VitaltrackContext())
-            {
-                List<Paciente> pacientes = db.Pacientes.Where(x => x.Activo == true).ToList();
-                gridPacientes.ItemsSource = pacientes;
-            }
-
-            gridPacientes.SelectedItem = pacienteSeleccionado;
         }   
     
         private void btnBaja_Click(object sender, RoutedEventArgs e)
@@ -85,7 +65,7 @@ namespace VitalTrack.Views
                 using (VitaltrackContext db = new VitaltrackContext())
                 {
                     Paciente objetoPaciente = db.Pacientes.Find(paciente.PacienteId);
-                    objetoPaciente.Activo = false;
+                    objetoPaciente.Activo   = false;
 
                     db.SaveChanges();
                 }
@@ -112,17 +92,23 @@ namespace VitalTrack.Views
             }
         }
 
-        private void RefrescarListaPacientes()
+        private void RefrescarListaPacientes(Paciente? pacienteSeleccionado = null)
         {
+            List<Paciente> pacientes;
             using (VitaltrackContext db = new VitaltrackContext())
             {
-                List<Paciente> pacientes = db.Pacientes.Where(x => x.Activo == true).ToList();
-                gridPacientes.ItemsSource = pacientes;
+               pacientes = db.Pacientes.Where(x => x.Activo == true).ToList();
             }
+            
+            gridPacientes.ItemsSource = pacientes;
 
-            if (pacienteSeleccionadoGlobal != null)
+            if (pacienteSeleccionado != null)
             {
-                gridPacientes.SelectedItem = pacienteSeleccionadoGlobal;
+                gridPacientes.SelectedItem = pacientes.FirstOrDefault(p => p.PacienteId == pacienteSeleccionado.PacienteId);
+            }
+            else
+            {
+                gridPacientes.SelectedItem = pacientes.Count > 0 ? pacientes[0] : null;
             }
         }
     }
