@@ -12,10 +12,11 @@
         FontSize="18" 
         FontWeight="Bold"
         Background="#ff91C4C3"
-        Icon="/Images/icons8-employee-100-3.png" ResizeMode="NoResize">
+        Icon="/Images/icons8-employee-100-3.png" ResizeMode="NoResize" Loaded="Window_Loaded">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
@@ -32,66 +33,75 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Label x:Name="lbTitulo" Content="Alta Paciente"  Grid.Column="0" Height="34" Width="238" HorizontalContentAlignment="Center" VerticalAlignment="Center" Grid.ColumnSpan="2"/>
 
-        <Grid Grid.Row="0" Grid.Column="0">
+        <Grid Grid.Column="0" Margin="0,34,0,35" Grid.RowSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="ID paciente" Grid.Row="0" Height="34" Width="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="22,4,0,0" RenderTransformOrigin="0.264,0.215"/>
-            <TextBox x:Name="txtPacienteID" IsReadOnly="True" Grid.Row="0" TextWrapping="Wrap" Margin="69,6,50,6" Grid.ColumnSpan="2" />
-            <Label Content="Activo" Grid.Column="2" Height="34" Width="70" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" RenderTransformOrigin="0.314,0.645"/>
-            <TextBox x:Name="txtActivo"  IsReadOnly="True" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Margin="85,6,15,6" Grid.ColumnSpan="2" />
+            <Label Content="ID paciente" Height="34" Width="28" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0,6,0,6"  />
+            <TextBox x:Name="txtPacienteID" IsReadOnly="True" Grid.Row="0" TextWrapping="Wrap" Margin="33,2,86,2" Grid.ColumnSpan="2" />
+            <Label Content="Activo" Grid.Column="2" Height="34" Width="70" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="0,6,0,6"/>
+            <TextBox x:Name="txtActivo"  IsReadOnly="True" Grid.Row="0" Grid.Column="2" TextWrapping="Wrap" Margin="85,2,10,2" Grid.ColumnSpan="2" />
         </Grid>
 
-        <Label Content="Nombre"  Grid.Row="1"  Grid.Column="0" Height="34" Width="105" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
-        <TextBox x:Name="txtNombrePaciente" Grid.Row="1" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Label Content="Nombre"  Grid.Row="2"  Grid.Column="0" Height="34" Width="101" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <TextBox x:Name="txtNombrePaciente" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="122,2,10,2" />
 
-        <Label Content="Apellidos"  Grid.Row="2" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtApellidosPaciente" Grid.Row="2" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Label Content="Apellidos"  Grid.Row="3" Height="34" Width="105" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,4,0,0" Grid.RowSpan="2" />
+        <TextBox x:Name="txtApellidosPaciente" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,2,10,2" />
 
-        <Label Content="DNI"  Grid.Row="3" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtDNIPaciente" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Label Content="DNI"  Grid.Row="4" Grid.Column="0" Height="34" Width="106" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,3,0,0" Grid.RowSpan="2" />
+        <TextBox x:Name="txtDNIPaciente" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,2,10,2" />
 
-        <Label Content="Nacimiento"  Grid.Row="4" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,6" />
-        <DatePicker x:Name="dpFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
+        <Label Content="Nacimiento"  Grid.Row="5" Grid.Column="0" Height="34" Width="117" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <DatePicker x:Name="dpFechaNacimientoPaciente" Grid.Row="5" Grid.Column="0"  VerticalAlignment="Top"  Margin="122,2,12,2"   SelectedDateFormat="Long" />
 
-        <Label Content="Sexo"  Grid.Row="3" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
-        <TextBox x:Name="txtSexoPaciente" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
+        <Label Content="Creador" Grid.Row="1" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="txtCreadorPaciente"  Grid.Row="1" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="115,2,10,2" />
 
-        <Label Content="Teléfono"  Grid.Row="4"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtTelefonoPaciente" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
+        <Label Content="Actualizador" Grid.Row="2" Grid.Column="1" Height="34" Width="119" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="txtActualizadorPaciente"  Grid.Row="2" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="115,2,10,2" />
 
-        <Label Content="Email"  Grid.Row="5"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtEmailPaciente" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
+        <Label Content="Dirección"  Grid.Row="3" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Grid.Column="1" />
+        <TextBox x:Name="txtDireccionPaciente" Grid.Row="3" TextWrapping="Wrap" Margin="115,2,10,2" Grid.Column="1" />
 
-        <Label Content="Dirección"  Grid.Row="5" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
-        <TextBox x:Name="txtDireccionPaciente" Grid.Row="5" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Grid Grid.Row="4" Grid.Column="1" Margin="19,0,-19,35" Grid.RowSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Sexo" Height="34"  HorizontalAlignment="Left" VerticalAlignment="Center" Margin="-19,0,0,0" />
+            <RadioButton x:Name="rbMujer" Content="Fem." Grid.Column="1" FontSize="12" HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <RadioButton x:Name="rbHombre" Content="Masc." Grid.Column="2" FontSize="12"   HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <RadioButton x:Name="rbTrans" Content="Trans." Grid.Column="3" FontSize="12"   HorizontalAlignment="Left" VerticalAlignment="Center" />
+            <RadioButton x:Name="rbNoDeclarado" Content="N/D" Grid.Column="4" FontSize="12"   HorizontalAlignment="Left" VerticalAlignment="Center" />
+        </Grid>
 
-        <Label Content="Observaciones"  Grid.Row="6" Grid.Column="0"  Height="34" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtObservacionesPaciente" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="147,6,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Label Content="Teléfono"  Grid.Row="5"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="txtTelefonoPaciente" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="115,1,10,3" />
 
-        <Label Content="Creador" Grid.Row="0" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtCreadorPaciente"  Grid.Row="0" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Label Content="Email"  Grid.Row="6" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" />
+        <TextBox x:Name="txtEmailPaciente" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Margin="115,2,8,2" />
 
-        <Label Content="Alta sist."  Grid.Row="1"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <DatePicker x:Name="dpAltaEnSistemaPaciente"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long"  />
 
-        <Label Content="Última act."  Grid.Row="2"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <DatePicker x:Name="dpActualizacionPaciente"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
+        <Label Content="Observaciones"  Grid.Row="6" Grid.Column="0"  Height="34" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="txtObservacionesPaciente" Grid.Row="7" Grid.Column="0" TextWrapping="Wrap" Margin="10,2,8,2" Grid.ColumnSpan="2" Grid.RowSpan="3" />
 
 
         <Grid Grid.Row="10" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="10,5,10,4" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
-            <Button Margin="10,5,10,4" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
-            <Button Margin="10,5,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
-        </Grid>        
+            <Button Margin="10,0,10,4" Name="btnGuardar" Content="Guardar" FontSize="18" FontWeight="Bold" Click="btnGuardar_Click" />
+            <Button Margin="10,0,10,4" Name="btnCerrar" Content="Cerrar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnCerrar_Click"/>
+        </Grid>
     </Grid>
 </Window>

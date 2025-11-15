@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
@@ -6,12 +7,13 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using VitalTrack.Data;
 using VitalTrack.Models;
+using VitalTrack.ViewModels;
 
 namespace VitalTrack.Views
 {
     public partial class PanelPacientes : UserControl
     {
-        private Paciente? pacienteSeleccionadoGlobal;
+        private PacienteAmpliadoViewModel? pacienteSeleccionadoGlobal;
 
         public PanelPacientes()
         {
@@ -21,7 +23,7 @@ namespace VitalTrack.Views
 
         private void gridPacientes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            pacienteSeleccionadoGlobal = (Paciente)gridPacientes.SelectedItem ?? gridPacientes.Items.OfType<Paciente>().FirstOrDefault() ;
+            pacienteSeleccionadoGlobal = (PacienteAmpliadoViewModel)gridPacientes.SelectedItem ?? gridPacientes.Items.OfType<PacienteAmpliadoViewModel>().FirstOrDefault() ;
                      
             if (pacienteSeleccionadoGlobal is null)
             {
@@ -30,29 +32,66 @@ namespace VitalTrack.Views
             }
 
             // Recuperar de base datos datos actualizados del paciente seleccionado
-            using (VitaltrackContext db = new VitaltrackContext())
+            PacienteAmpliadoViewModel paciente = GenerarListaPacienteAmpliado().FirstOrDefault(p => p.PacienteId == pacienteSeleccionadoGlobal.PacienteId);                           
+
+            txtPacienteID.Text              = paciente.PacienteId.ToString();
+            txtActivo.Text                  = paciente.Activo.HasValue ? (paciente.Activo.Value ? "Sí" : "No") : "Desconocido";
+            txtNombrePaciente.Text          = paciente.Nombre;
+            txtApellidosPaciente.Text       = paciente.Apellidos;
+            txtDNIPaciente.Text             = paciente.Dni ?? "Desconocido";
+            txtDireccionPaciente.Text       = paciente.Direccion ?? "Desconocido";
+            txtObservacionesPaciente.Text   = paciente.Observaciones ?? "Ninguna";
+            txtTelefonoPaciente.Text        = paciente.Telefono ?? "Desconocido";
+            txtEmailPaciente.Text           = paciente.Email ?? "Desconocido";
+            txtFechaNacimientoPaciente.Text = paciente.FechaNacimiento.HasValue ? paciente.FechaNacimiento.Value.ToString("d") : "Desconocido";
+            txtSexoPaciente.Text            = descipcionSexo(paciente.Sexo);
+            txtCreadorPaciente.Text         = paciente.NombreCreadoPor ?? "Desconocido";
+            txtAltaEnSistemaPaciente.Text   = paciente.CreadoEn.ToString();
+            txtActualizadorPaciente.Text    = paciente.NombreActualizadoPor ?? "Desconocido";
+            txtActualizacionPaciente.Text   = paciente.ActualizadoEn.ToString();
+        }
+
+
+        private void btnAlta_Click(object sender, RoutedEventArgs e)
+        {
+            pacienteSeleccionadoGlobal = (PacienteAmpliadoViewModel)gridPacientes.SelectedItem;
+
+            if ( pacienteSeleccionadoGlobal is null)
             {
-                Paciente paciente = db.Pacientes.Find(pacienteSeleccionadoGlobal.PacienteId);
-                txtPacienteID.Text                     = paciente.PacienteId.ToString();
-                txtActivo.Text                         = paciente.Activo.HasValue ? (paciente.Activo.Value ? "Sí" : "No") : "Desconocido";
-                txtNombrePaciente.Text                 = paciente.Nombre;
-                txtApellidosPaciente.Text              = paciente.Apellidos;
-                txtDNIPaciente.Text                    = paciente.Dni ?? "Desconocido";
-                txtDireccionPaciente.Text              = paciente.Direccion ?? "Desconocido";
-                txtObservacionesPaciente.Text          = paciente.Observaciones ?? "Ninguna";
-                txtTelefonoPaciente.Text               = paciente.Telefono ?? "Desconocido";
-                txtEmailPaciente.Text                  = paciente.Email ?? "Desconocido";
-                txtFechaNacimientoPaciente.Text        = paciente.FechaNacimiento.HasValue ? paciente.FechaNacimiento.Value.ToString("d") : "Desconocido";
-                txtSexoPaciente.Text                   = paciente.Sexo ?? "Desconocido";
-                txtCreadorPaciente.Text                = paciente.CreadoPor.HasValue ? (paciente.Nombre + " " + paciente.Apellidos) : "Desconocido";
-                txtAltaEnSistemaPaciente.Text          = paciente.CreadoEn.ToString();
-                txtActualizacionPaciente.Text          = paciente.ActualizadoEn.ToString();
+                MessageBox.Show("No hay ningún paciente seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
             }
-        }   
-    
+
+            VentanaPacientes ventanaPaciente = new VentanaPacientes();
+            ventanaPaciente.ShowDialog();
+
+            pacienteSeleccionadoGlobal = ventanaPaciente.pacienteAlta ?? pacienteSeleccionadoGlobal;
+
+            RefrescarListaPacientes(pacienteSeleccionadoGlobal);
+        }
+
+        private void btnActualizar_Click(object sender, RoutedEventArgs e)
+        {
+            PacienteAmpliadoViewModel paciente = (PacienteAmpliadoViewModel)gridPacientes.SelectedItem;
+
+            if (paciente is null)
+            {
+                MessageBox.Show("No hay ningún paciente seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            VentanaPacientes ventanaPaciente = new VentanaPacientes();
+            ventanaPaciente.pacienteActualizar = paciente;
+            ventanaPaciente.ShowDialog();
+
+            pacienteSeleccionadoGlobal = ventanaPaciente.pacienteAlta ?? pacienteSeleccionadoGlobal;
+
+            RefrescarListaPacientes(pacienteSeleccionadoGlobal);
+        }
+
         private void btnBaja_Click(object sender, RoutedEventArgs e)
         {
-            Paciente paciente = (Paciente)gridPacientes.SelectedItem;
+            PacienteAmpliadoViewModel paciente = (PacienteAmpliadoViewModel)gridPacientes.SelectedItem;
             if (paciente is null)
             {
                 MessageBox.Show("No hay ningún paciente seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -92,14 +131,24 @@ namespace VitalTrack.Views
             }
         }
 
-        private void RefrescarListaPacientes(Paciente? pacienteSeleccionado = null)
+
+        // Métodos auxiliares
+
+        private string descipcionSexo(string? sexo)
         {
-            List<Paciente> pacientes;
-            using (VitaltrackContext db = new VitaltrackContext())
+            return sexo switch
             {
-               pacientes = db.Pacientes.Where(x => x.Activo == true).ToList();
-            }
-            
+                Constantes.Sexos.Masculino => Constantes.NombreSexos.Masculino,
+                Constantes.Sexos.Femenino => Constantes.NombreSexos.Femenino,
+                Constantes.Sexos.Trans => Constantes.NombreSexos.Trans,
+                Constantes.Sexos.NoDeclarado => Constantes.NombreSexos.NoDeclarado,
+                _   => "Desconocido",
+            };
+        }
+        private void RefrescarListaPacientes(PacienteAmpliadoViewModel? pacienteSeleccionado = null)
+        {
+            List<PacienteAmpliadoViewModel> pacientes = GenerarListaPacienteAmpliado();
+
             gridPacientes.ItemsSource = pacientes;
 
             if (pacienteSeleccionado != null)
@@ -110,6 +159,42 @@ namespace VitalTrack.Views
             {
                 gridPacientes.SelectedItem = pacientes.Count > 0 ? pacientes[0] : null;
             }
+        }
+
+        private static List<PacienteAmpliadoViewModel> GenerarListaPacienteAmpliado()
+        {
+            List<PacienteAmpliadoViewModel> pacientes;
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                pacientes = db.Pacientes.
+                               Where(x => x.Activo == true).
+                               Include(x => x.CreadoPorNavigation).
+                               Include(x => x.ActualizadoPorNavigation).
+                               Select(x => new PacienteAmpliadoViewModel
+                               {
+                                   PacienteId = x.PacienteId,
+                                   Nhc = x.Nhc,
+                                   Dni = x.Dni,
+                                   Nombre = x.Nombre,
+                                   Apellidos = x.Apellidos,
+                                   FechaNacimiento = x.FechaNacimiento,
+                                   Sexo = x.Sexo,
+                                   Telefono = x.Telefono,
+                                   Email = x.Email,
+                                   Direccion = x.Direccion,
+                                   Observaciones = x.Observaciones,
+                                   Activo = x.Activo,
+                                   CreadoEn = x.CreadoEn,
+                                   ActualizadoEn = x.ActualizadoEn,
+                                   CreadoPor = x.CreadoPor,
+                                   NombreCreadoPor = x.CreadoPorNavigation != null ? (x.CreadoPorNavigation.Nombre + " " + x.CreadoPorNavigation.Apellidos) : "Desconocido",
+                                   ActualizadoPor = x.ActualizadoPor,
+                                   NombreActualizadoPor = x.ActualizadoPorNavigation != null ? (x.ActualizadoPorNavigation.Nombre + " " + x.ActualizadoPorNavigation.Apellidos) : "Desconocido",
+                               }).
+                               ToList();
+            }
+
+            return pacientes;
         }
     }
 }

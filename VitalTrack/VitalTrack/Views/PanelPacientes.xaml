@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800" Loaded="UserControl_Loaded">
+             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
@@ -18,7 +18,8 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -52,31 +53,35 @@
         <Label Content="Nacimiento"  Grid.Row="4" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,6" />
         <TextBox x:Name="txtFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
 
-        <Label Content="Sexo"  Grid.Row="3" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
-        <TextBox x:Name="txtSexoPaciente" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
 
-        <Label Content="Teléfono"  Grid.Row="4"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtTelefonoPaciente" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
+        <Label Content="Sexo"  Grid.Row="5" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" />
+        <TextBox x:Name="txtSexoPaciente" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
 
-        <Label Content="Email"  Grid.Row="5"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtEmailPaciente" Grid.Row="5" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
+        <Label Content="Teléfono"  Grid.Row="6" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0" />
+        <TextBox x:Name="txtTelefonoPaciente" Grid.Row="6" TextWrapping="Wrap" Margin="120,6,14,6" />
 
-        <Label Content="Dirección"  Grid.Row="5" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
+        <Label Content="Email"  Grid.Row="6" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,37,0,0" Grid.RowSpan="2" />
+        <TextBox x:Name="txtEmailPaciente" Grid.Row="7" TextWrapping="Wrap" Margin="120,4,14,8" />
+
+        <Label Content="Dirección"  Grid.Row="5" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,4,0,0" Grid.RowSpan="2" />
         <TextBox x:Name="txtDireccionPaciente" Grid.Row="5" TextWrapping="Wrap" Margin="120,6,10,6" />
 
-        <Label Content="Observaciones"  Grid.Row="6" Grid.Column="0"  Height="34" Width="150" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtObservacionesPaciente" Grid.Row="6" Grid.Column="0" TextWrapping="Wrap" Margin="147,6,10,0" Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <Label Content="Observaciones"  Grid.Row="8" Grid.Column="0"  Height="34" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top" />
+        <TextBox x:Name="txtObservacionesPaciente" Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" Margin="147,3,10,3" Grid.ColumnSpan="2" Grid.RowSpan="2" />
 
-        <Label Content="Creador" Grid.Row="0" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+        <Label Content="Creador" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <TextBox x:Name="txtCreadorPaciente"  Grid.Row="0" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Alta sist."  Grid.Row="1"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <TextBox x:Name="txtAltaEnSistemaPaciente"  Grid.Row="1" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
-        <Label Content="Última act."  Grid.Row="2"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtActualizacionPaciente"  Grid.Row="2" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
+        <Label Content="Actualizador" Grid.Row="2" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+        <TextBox x:Name="txtActualizadorPaciente"  Grid.Row="2" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
-        <DataGrid Grid.Row="8"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,10,0,46" Grid.RowSpan="3" SelectionChanged="gridPacientes_SelectionChanged" >
+        <Label Content="Última act."  Grid.Row="3"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+        <TextBox x:Name="txtActualizacionPaciente"  Grid.Row="3" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
+
+        <DataGrid Grid.Row="10"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,10,0,46" Grid.RowSpan="3" SelectionChanged="gridPacientes_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
                 <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*" Visibility="Hidden"/>
@@ -96,15 +101,15 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Grid Grid.Row="10" Grid.ColumnSpan="3">
+        <Grid Grid.Row="11" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button Margin="10,5,10,4" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
-            <Button Margin="10,5,10,4" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
-            <Button Margin="10,5,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnBaja_Click"/>
+            <Button Margin="10,0,10,4" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" Click="btnAlta_Click" />
+            <Button Margin="10,0,10,4" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnActualizar_Click"/>
+            <Button Margin="10,0,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnBaja_Click"/>
         </Grid>
     </Grid>
 </UserControl>

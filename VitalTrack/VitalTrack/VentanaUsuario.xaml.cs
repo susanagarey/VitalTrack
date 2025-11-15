@@ -37,7 +37,7 @@ namespace VitalTrack
             lbAviso.Visibility = Visibility.Collapsed;
             nombreArchivoFoto  = null;
             lbTitulo.Content   = "Alta usuario";
-            this.Title = "Alta usuario";
+            this.Title = "VitalTrack - Alta usuario";
 
             if ( usuarioActualizar != null )  // se trata de una actualiación
             {
@@ -225,7 +225,7 @@ namespace VitalTrack
                 // Volver a modo alta usuario
                 lbAviso.Visibility = Visibility.Collapsed;
                 lbTitulo.Content   = "Alta usuario";
-                this.Title         = "Alta usuario";
+                this.Title         = "VitalTrack - Alta usuario";
                 MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 return true;

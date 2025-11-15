@@ -64,6 +64,7 @@ namespace VitalTrack.Views
 
             if (usuarioSeleccionadoGlobal == null)
             {
+                MessageBox.Show("No hay ningún usuario seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
