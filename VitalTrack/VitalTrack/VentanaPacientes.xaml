@@ -1,11 +1,18 @@
-﻿<UserControl x:Class="VitalTrack.Views.PanelPacientes"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:VitalTrack.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
+﻿<Window x:Class="VitalTrack.VentanaPacientes"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:VitalTrack"
+        mc:Ignorable="d"
+        Title="Alta Pacientes" 
+        Height="400" 
+        Width="800" 
+        WindowStartupLocation="CenterScreen"
+        FontSize="18" 
+        FontWeight="Bold"
+        Background="#ff91C4C3"
+        Icon="/Images/icons8-employee-100-3.png" ResizeMode="NoResize">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
@@ -18,7 +25,6 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -50,7 +56,7 @@
         <TextBox x:Name="txtDNIPaciente" Grid.Row="3" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Nacimiento"  Grid.Row="4" Grid.Column="0" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,6,0,6" />
-        <TextBox x:Name="txtFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0" TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpFechaNacimientoPaciente" Grid.Row="4" Grid.Column="0"  VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
 
         <Label Content="Sexo"  Grid.Row="3" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,2,0,0" />
         <TextBox x:Name="txtSexoPaciente" Grid.Row="3" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,13,6" />
@@ -71,30 +77,11 @@
         <TextBox x:Name="txtCreadorPaciente"  Grid.Row="0" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
         <Label Content="Alta sist."  Grid.Row="1"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
-        <TextBox x:Name="txtAltaEnSistemaPaciente"  Grid.Row="1" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpAltaEnSistemaPaciente"  Grid.Row="1" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long"  />
 
         <Label Content="Última act."  Grid.Row="2"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtActualizacionPaciente"  Grid.Row="2" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
+        <DatePicker x:Name="dpActualizacionPaciente"  Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  Margin="120,12,13,0"   SelectedDateFormat="Long" />
 
-        <DataGrid Grid.Row="8"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,10,0,46" Grid.RowSpan="3" SelectionChanged="gridPacientes_SelectionChanged" >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Covertura" Binding="{Binding Nhc}" Width="2*"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="3*"/>
-                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}" Width="*"/>
-                <DataGridTextColumn Header="Nacimiento" Binding="{Binding FechaNacimiento}" Width="2*"/>
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="2*"/>
-                <DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" Width="3*"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Observaciones" Binding="{Binding Observaciones}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Creación" Binding="{Binding CreadoEn}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Creador" Binding="{Binding CreadoPor}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*" Visibility="Hidden"/>
-            </DataGrid.Columns>
-        </DataGrid>
 
         <Grid Grid.Row="10" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
@@ -104,7 +91,7 @@
             </Grid.ColumnDefinitions>
             <Button Margin="10,5,10,4" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" />
             <Button Margin="10,5,10,4" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold"/>
-            <Button Margin="10,5,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnBaja_Click"/>
-        </Grid>
+            <Button Margin="10,5,10,4" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
+        </Grid>        
     </Grid>
-</UserControl>
+</Window>

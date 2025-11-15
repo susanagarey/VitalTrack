@@ -17,12 +17,9 @@ using VitalTrack.Models;
 
 namespace VitalTrack.Views
 {
-    /// <summary>
-    /// Interaction logic for PanelUsuarios.xaml
-    /// </summary>
     public partial class PanelUsuarios : UserControl
     {
-        Usuario? usuarioGlobal;
+        Usuario? usuarioSeleccionadoGlobal;
 
         public PanelUsuarios()
         {
@@ -33,29 +30,26 @@ namespace VitalTrack.Views
 
         private void gridUsuarios_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Usuario usuario = (Usuario)gridUsuarios.SelectedItem;
+            usuarioSeleccionadoGlobal = (Usuario)gridUsuarios.SelectedItem ?? gridUsuarios.Items.OfType<Usuario>().FirstOrDefault(); 
 
-            if  (usuario != null )
-            {
-                usuarioGlobal = usuario;
-            }
-
-            usuario = usuario ?? usuarioGlobal ?? gridUsuarios.Items.OfType<Usuario>().FirstOrDefault();
-
-            if (usuario == null)
+            if (usuarioSeleccionadoGlobal == null)
                 return;
 
-            txtUsuarioID.Text           = usuario.UsuarioId.ToString();
-            txtActivoUsuario.Text       = usuario.Activo.HasValue ? (usuario.Activo.Value ? "Sí" : "No") : "Desconocido";
-            txtCuentaUsuario.Text       = usuario.NombreUsuario;
-            txtNombreUsuario.Text       = usuario.Nombre;
-            txtApellidosUsuario.Text    = usuario.Apellidos;
-            txtTelefonoUsuario.Text     = usuario.Telefono;
-            txtEmailUsuario.Text        = usuario.Email;
-            txtCreadoUsuario.Text       = usuario.CreadoEn.ToString();
-            txtUltimoAccesoUsuario.Text = usuario.UltimoAcceso == null ? "Sin datos" : usuario.UltimoAcceso.ToString();
-
-            string trayectoriaFoto = App.CarpetaFotos + (usuario.Foto ?? ("desconocido.png"));
+            string trayectoriaFoto;
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                Usuario objetoUsuario = db.Usuarios.Find(usuarioSeleccionadoGlobal.UsuarioId)!;
+                txtUsuarioID.Text           = objetoUsuario.UsuarioId.ToString();
+                txtActivoUsuario.Text       = objetoUsuario.Activo.HasValue ? (objetoUsuario.Activo.Value ? "Sí" : "No") : "Desconocido";
+                txtCuentaUsuario.Text       = objetoUsuario.NombreUsuario;
+                txtNombreUsuario.Text       = objetoUsuario.Nombre;
+                txtApellidosUsuario.Text    = objetoUsuario.Apellidos;
+                txtTelefonoUsuario.Text     = objetoUsuario.Telefono;
+                txtEmailUsuario.Text        = objetoUsuario.Email;
+                txtCreadoUsuario.Text       = objetoUsuario.CreadoEn.ToString();
+                txtUltimoAccesoUsuario.Text = objetoUsuario.UltimoAcceso == null ? "Sin datos" : usuarioSeleccionadoGlobal.UltimoAcceso.ToString();
+                trayectoriaFoto             = App.CarpetaFotos + (objetoUsuario.Foto ?? ("desconocido.png"));
+            }
 
             var bitmap = new BitmapImage();
             bitmap.BeginInit();
@@ -67,56 +61,101 @@ namespace VitalTrack.Views
 
         private void btnAlta_Click(object sender, RoutedEventArgs e)
         {
-            usuarioGlobal = (Usuario)gridUsuarios.SelectedItem;  // Si al final no se realiza alta, mantener el usuario seleccionado
+            usuarioSeleccionadoGlobal = (Usuario)gridUsuarios.SelectedItem;  // Si al final no se realiza alta, mantener el usuario seleccionado
+
+            if (usuarioSeleccionadoGlobal == null)
+            {
+                return;
+            }
 
             VentanaUsuario ventana = new VentanaUsuario();
             ventana.ShowDialog();
 
-            usuarioGlobal = ventana.ultimoUsuarioCreado ?? usuarioGlobal;
+            usuarioSeleccionadoGlobal = ventana.usuarioAlta ?? usuarioSeleccionadoGlobal;   // Si no hubo alta, mantener el usuario seleccionado
 
-            RefrescarListaUsuarios();
-
-            if (usuarioGlobal != null)
-            {
-                int index = ObtenerIndiceCorrespondiente(usuarioGlobal.UsuarioId);
-                if (index >= 0)
-                    gridUsuarios.SelectedIndex = index;
-            }
+            RefrescarListaUsuarios(usuarioSeleccionadoGlobal);
         }
         
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
             Usuario usuario = (Usuario)gridUsuarios.SelectedItem;
+
+            if (usuario == null) {
+                MessageBox.Show("No hay ningún usuario seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             VentanaUsuario ventanaUsuarios = new VentanaUsuario();
-            ventanaUsuarios.ultimoUsuarioCreado = usuario;
+            ventanaUsuarios.usuarioActualizar = usuario;
             ventanaUsuarios.ShowDialog();
 
-            RefrescarListaUsuarios();
+            usuarioSeleccionadoGlobal = ventanaUsuarios.usuarioAlta ?? usuarioSeleccionadoGlobal;
+            RefrescarListaUsuarios(usuarioSeleccionadoGlobal);
         }
 
-        private void RefrescarListaUsuarios()
+        private void btnBaja_Click(object sender, RoutedEventArgs e)
         {
+            Usuario usuario = (Usuario)gridUsuarios.SelectedItem;
+            if (usuario == null)
+            {
+                MessageBox.Show("No hay ningún usuario seleccionado.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            MessageBoxResult result = MessageBox.Show("¿Estás seguro de que deseas dar de baja a este usuario?", "Confirmar baja", MessageBoxButton.YesNo);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                using (VitaltrackContext db = new VitaltrackContext())
+                {
+                    Usuario objetoUsuario = db.Usuarios.Find(usuario.UsuarioId);
+                    objetoUsuario.Activo = false;
+
+                    db.SaveChanges();
+                }
+
+                // Limpiar los detalles del usuario mostrado
+                txtUsuarioID.Text = "";
+                txtActivoUsuario.Text = "";
+                txtCuentaUsuario.Text = "";
+                txtNombreUsuario.Text = "";
+                txtApellidosUsuario.Text = "";
+                txtTelefonoUsuario.Text = "";
+                txtEmailUsuario.Text = "";
+                txtCreadoUsuario.Text = "";
+                txtUltimoAccesoUsuario.Text = "";
+
+                var bitmap = new BitmapImage();
+                bitmap.BeginInit();
+                bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                bitmap.UriSource = new Uri(App.CarpetaFotos + App.FotoPorDefecto, UriKind.Relative);
+                bitmap.EndInit();
+                fotoUsuario.Source = bitmap;
+
+                // Refrescar la lista de usuarios
+                RefrescarListaUsuarios();
+            }
+        }
+
+        private void RefrescarListaUsuarios(Usuario? usuarioSeleccionado = null)
+        {
+            List<Usuario> usuarios;
             using (VitaltrackContext db = new VitaltrackContext())
             {
-                List<Usuario> usuarios = db.Usuarios.ToList();
-                gridUsuarios.ItemsSource = usuarios;
+                usuarios = db.Usuarios.Where(x=> x.Activo == true).ToList();
             }
+          
+            gridUsuarios.ItemsSource = usuarios;
 
-            if (usuarioGlobal != null)
+            if (usuarioSeleccionado != null)
             {
-                gridUsuarios.SelectedItem = usuarioGlobal;
+                gridUsuarios.SelectedItem = usuarios.FirstOrDefault(u => u.UsuarioId == usuarioSeleccionado.UsuarioId); 
             }
-        }
-
-        private int ObtenerIndiceCorrespondiente(uint usuarioId)
-        {
-            for (int i = 0; i < gridUsuarios.Items.Count; i++)
+            else
             {
-                if (gridUsuarios.Items[i] is Usuario u && u.UsuarioId == usuarioId)
-                    return i;
+                gridUsuarios.SelectedItem = usuarios.Count > 0 ? usuarios[0] : null;
             }
-            return -1;
         }
     }
 }

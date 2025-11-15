@@ -18,22 +18,64 @@ using Path = System.IO.Path;
 using VitalTrack.Models;
 using VitalTrack.Data;
 using System.Security.Cryptography;
+using System.Security.Policy;
 
 namespace VitalTrack
 {
-    /// <summary>
-    /// Interaction logic for VentanaUsuario.xaml
-    /// </summary>
     public partial class VentanaUsuario : Window
     {
-        String? nombreArchivoFoto;
-        public Usuario ultimoUsuarioCreado;
+        String? nombreArchivoFoto;              // Nombre del archivo de la foto del registro de usuario actual
+        public Usuario? usuarioAlta;            // Ultimo usuario que hemos dado de alta o actualizado
+        public Usuario? usuarioActualizar;      // Usuario que nos indican actualizar
 
         public VentanaUsuario()
         {
             InitializeComponent();
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            lbAviso.Visibility = Visibility.Collapsed;
+            nombreArchivoFoto  = null;
+            lbTitulo.Content   = "Alta usuario";
+            this.Title = "Alta usuario";
 
+            if ( usuarioActualizar != null )  // se trata de una actualiación
+            {
+                lbTitulo.Content   = "Editar usuario";
+                this.Title         = "Editar usuario";
+                lbAviso.Visibility = Visibility.Visible;
+
+                // Cargar datos del usuario a actualizar
+                txtCuentaUsuario.Text        = usuarioActualizar.NombreUsuario;
+                txtNombreUsuario.Text        = usuarioActualizar.Nombre;
+                txtApellidosUsuario.Text     = usuarioActualizar.Apellidos;
+                txtTelefonoUsuario.Text      = usuarioActualizar.Telefono;
+                txtEmailUsuario.Text         = usuarioActualizar.Email;
+                dpCreadoUsuario.SelectedDate = usuarioActualizar.CreadoEn;
+                txtContrasena.Password       = "";  // En blanco = no modificar por defecto
+
+                if ( !string.IsNullOrWhiteSpace(usuarioActualizar.Foto) )
+                {
+                    string trayectoriaFoto = App.CarpetaFotos + usuarioActualizar.Foto;
+                    if (File.Exists(trayectoriaFoto))
+                    {
+                        var bitmap = new BitmapImage();
+                        bitmap.BeginInit();
+                        bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                        bitmap.UriSource = new Uri(trayectoriaFoto, UriKind.Absolute);
+                        bitmap.EndInit();
+                        fotoUsuario.Source = bitmap;
+                    } else
+                    {
+                        fotoUsuario.Source = ObtenerFotoPorDefecto();
+                    }
+                }
+            }
+            else  // se trata de un alta
+            {
+                nombreArchivoFoto = App.FotoPorDefecto;
+            }
+        }
 
         private void btnSalir_Click(object sender, RoutedEventArgs e)
         {
@@ -42,44 +84,76 @@ namespace VitalTrack
 
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
+            bool exito = false;
 
+            if (usuarioActualizar == null)
+            {
+                exito = CrearUsuario();
+            }
+            else
+            {
+                exito = ActualizarUsuario();
+            }
+            
+            if ( exito )
+            {
+                // Borrar campos, tras éxito en operación:
+                txtCuentaUsuario.Clear();
+                txtContrasena.Clear();
+                txtNombreUsuario.Clear();
+                txtApellidosUsuario.Clear();
+                txtEmailUsuario.Clear();
+                txtTelefonoUsuario.Clear();
+                fotoUsuario.Source = ObtenerFotoPorDefecto();
+                nombreArchivoFoto  = App.FotoPorDefecto;
+                dpCreadoUsuario.SelectedDate = DateTime.Today;
+                nombreArchivoFoto = null;
+            }
+        }
+
+        private bool CrearUsuario()
+        {
+            if ( ValidarCreacion() )
+            {
+                // Preparar objeto Usuario
+                Usuario usuario       = new Usuario();
+                usuario.NombreUsuario = txtCuentaUsuario.Text.Trim();
+                usuario.HashPassword  = CalcularHashSha256(txtContrasena.Password);
+                usuario.Nombre        = txtNombreUsuario.Text.Trim();
+                usuario.Apellidos     = txtApellidosUsuario.Text.Trim();
+                usuario.Telefono      = txtTelefonoUsuario.Text.Trim();
+                usuario.Email         = txtEmailUsuario.Text.Trim();
+                usuario.Foto          = nombreArchivoFoto;
+
+                using (VitaltrackContext db = new VitaltrackContext())
+                {
+                    db.Usuarios.Add(usuario);
+                    db.SaveChanges();
+                }
+
+                usuarioAlta = usuario;
+                MessageBox.Show("Usuario añadido correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        private bool ValidarCreacion()
+        {
             // Validar campos texto:
-            if ( txtCuentaUsuario.Text.Trim()    == "" ||
-                 txtContrasena.Password.Trim()   == "" ||
-                 txtNombreUsuario.Text.Trim()    == "" ||
-                 txtApellidosUsuario.Text.Trim() == "" ||
-                 txtTelefonoUsuario.Text.Trim()  == "" ||
-                 txtEmailUsuario.Text.Trim()     == "" )
+            if (txtCuentaUsuario.Text.Trim() == "" ||
+                txtContrasena.Password.Trim() == "" ||
+                txtNombreUsuario.Text.Trim() == "" ||
+                txtApellidosUsuario.Text.Trim() == "" ||
+                txtTelefonoUsuario.Text.Trim() == "" ||
+                txtEmailUsuario.Text.Trim() == "")
             {
                 MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            // Comprobar que no existe ya el nombre de usuario
-            using (VitaltrackContext db = new VitaltrackContext())
-            {
-                if (db.Usuarios.FirstOrDefault(u => u.NombreUsuario == txtCuentaUsuario.Text.Trim()) != null)
-                {
-                    MessageBox.Show("El nombre de usuario ya está en uso.", "Nombre de usuario existente", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    txtCuentaUsuario.Focus();
-                    return;
-                }
-
-                if (db.Usuarios.FirstOrDefault(u => u.Email == txtEmailUsuario.Text.Trim()) != null)
-                {
-                    MessageBox.Show("Este email ya está en uso.", "Email ya utilizado", MessageBoxButton.OK, MessageBoxImage.Warning);
-                    txtEmailUsuario.Focus();
-                    return;
-                }
-            }
-
-            // Validar teléfono español con regex (también se puede hacer con el evento PreviewTextInput)
-            if (!esNumeroTelefonoValido(txtTelefonoUsuario.Text))
-            {
-                MessageBox.Show("Introduzca un teléfono español válido (9 dígitos comenzando por 6, 7, 8 o 9; puede incluir prefijo +34/0034 y separadores espacio o guion).",
-                                "Teléfono inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
-                txtTelefonoUsuario.Focus();
-                return;
+                return false;
             }
 
             // Validar email básico
@@ -87,60 +161,152 @@ namespace VitalTrack
             {
                 MessageBox.Show("Introduzca un email válido.",
                                 "Email inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
-                txtEmailUsuario.Focus();
-                return;
+                return false; 
             }
 
-            // Imagen por defecto si no se ha cargado foto
-            var bitmap = new BitmapImage();
-            if (fotoUsuario.Source == null || string.IsNullOrWhiteSpace(nombreArchivoFoto))
+            // Validar teléfono español con regex (también se puede hacer con el evento PreviewTextInput)
+            if (!esNumeroTelefonoValido(txtTelefonoUsuario.Text))
             {
-                nombreArchivoFoto = App.FotoPorDefecto;
-                string trayectoriaDefecto = ObtenerTrayectoriaFoto(nombreArchivoFoto);
-                if ( !File.Exists(trayectoriaDefecto) )
-                {
-                    // Último recurso: pack URI 
-                    trayectoriaDefecto = "pack://application:,,,/Images/Fotos/" + App.FotoPorDefecto;
-                }
-
-                bitmap.BeginInit();
-                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                bitmap.UriSource = new Uri(trayectoriaDefecto, UriKind.Absolute);
-                bitmap.EndInit();
-                fotoUsuario.Source = bitmap;
+                MessageBox.Show("Introduzca un teléfono español válido (9 dígitos comenzando por 6, 7, 8 o 9; puede incluir prefijo +34/0034 y separadores espacio o guion).",
+                                "Teléfono inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false; 
             }
 
-            // Guardar en base de datos
-            Usuario usuario       = new Usuario();
-            usuario.NombreUsuario = txtCuentaUsuario.Text.Trim();
-            usuario.HashPassword  = CalcularHashSha256(txtContrasena.Password);
-            usuario.Nombre        = txtNombreUsuario.Text.Trim();
-            usuario.Apellidos     = txtApellidosUsuario.Text.Trim();
-            usuario.Telefono      = txtTelefonoUsuario.Text.Trim();
-            usuario.Email         = txtEmailUsuario.Text.Trim();
-            usuario.Foto          = nombreArchivoFoto;
-
+            // Comprobar que no existe ya el nombre de usuario
             using (VitaltrackContext db = new VitaltrackContext())
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
+                if (db.Usuarios.Where(x=> x.Activo == true ).FirstOrDefault(u => u.NombreUsuario == txtCuentaUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("El nombre de usuario ya está en uso.", "Nombre de usuario existente", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+
+                if (db.Usuarios.Where(x => x.Activo == true).FirstOrDefault(u => u.Email == txtEmailUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("Este email ya está en uso.", "Email ya utilizado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
             }
 
-            ultimoUsuarioCreado = usuario;
-            MessageBox.Show("Usuario creado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+            return true;
+        }
 
-            // Borrar campos, tras éxito en operación:
-            txtCuentaUsuario.Clear();
-            txtContrasena.Clear();
-            txtNombreUsuario.Clear();
-            txtApellidosUsuario.Clear();
-            txtEmailUsuario.Clear();
-            txtTelefonoUsuario.Clear();
-            fotoUsuario.Source = bitmap;
-            dpCreadoUsuario.SelectedDate = DateTime.Today;
-        } 
-           
+        private bool ActualizarUsuario()
+        {
+            if ( ValidarActualizacion() )
+            {
+                Usuario usuario;
+                using (VitaltrackContext db = new VitaltrackContext())
+                {
+                    usuario = db.Usuarios.Find(usuarioActualizar.UsuarioId);
+
+                    usuario.NombreUsuario = txtCuentaUsuario.Text.Trim();
+                    usuario.Nombre        = txtNombreUsuario.Text.Trim();
+                    usuario.Apellidos     = txtApellidosUsuario.Text.Trim();
+                    usuario.Telefono      = txtTelefonoUsuario.Text.Trim();
+                    usuario.Email         = txtEmailUsuario.Text.Trim();
+
+                    if (nombreArchivoFoto != null)
+                    {
+                        usuario.Foto = nombreArchivoFoto;
+                    }
+
+                    if (txtContrasena.Password != "")
+                    {
+                        usuario.HashPassword = CalcularHashSha256(txtContrasena.Password);
+                    }
+
+                    db.SaveChanges();
+                }
+
+                // Guardar información
+                usuarioAlta        = usuario;
+                usuarioActualizar  = null;
+                // Volver a modo alta usuario
+                lbAviso.Visibility = Visibility.Collapsed;
+                lbTitulo.Content   = "Alta usuario";
+                this.Title         = "Alta usuario";
+                MessageBox.Show("Usuario actualizado correctamente.", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool ValidarActualizacion()
+        {
+            // Validar campos texto:
+            if (txtCuentaUsuario.Text.Trim() == "" ||
+                txtNombreUsuario.Text.Trim() == "" ||
+                txtApellidosUsuario.Text.Trim() == "" ||
+                txtTelefonoUsuario.Text.Trim() == "" ||
+                txtEmailUsuario.Text.Trim() == "")
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false; 
+            }
+
+            // Validar teléfono español con regex (también se puede hacer con el evento PreviewTextInput)
+            if (!esNumeroTelefonoValido(txtTelefonoUsuario.Text))
+            {
+                MessageBox.Show("Introduzca un teléfono español válido (9 dígitos comenzando por 6, 7, 8 o 9; puede incluir prefijo +34/0034 y separadores espacio o guion).",
+                                "Teléfono inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Validar email básico
+            if (!esEmailValido(txtEmailUsuario.Text))
+            {
+                MessageBox.Show("Introduzca un email válido.",
+                                "Email inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Comprobar que no existe ya el nombre de usuario
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                if (txtCuentaUsuario.Text.Trim() != usuarioActualizar.NombreUsuario &&
+                     db.Usuarios.Where(x=>x.Activo == true).FirstOrDefault(u => u.NombreUsuario == txtCuentaUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("El nombre de usuario ya está en uso.", "Nombre de usuario existente", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+
+                if (txtEmailUsuario.Text.Trim() != usuarioActualizar.Email &&
+                    db.Usuarios.Where(x => x.Activo == true).FirstOrDefault(u => u.Email == txtEmailUsuario.Text.Trim()) != null)
+                {
+                    MessageBox.Show("Este email ya está en uso.", "Email ya utilizado", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+          
+            return true;
+        }
+
+
         // Funciones auxiliares
+        private BitmapImage ObtenerFotoPorDefecto()
+        {
+            // Imagen por defecto si no se ha cargado foto
+            var bitmap = new BitmapImage();
+            string trayectoriaDefecto = App.CarpetaFotos + App.FotoPorDefecto;
+
+            if (!File.Exists(trayectoriaDefecto))
+            {
+                // Último recurso: pack URI 
+                trayectoriaDefecto = "pack://application:,,,/Images/Fotos/" + App.FotoPorDefecto;
+            }
+
+            bitmap.BeginInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.UriSource = new Uri(trayectoriaDefecto, UriKind.Absolute);
+            bitmap.EndInit();         
+
+            return bitmap;
+        }
         private static string CalcularHashSha256(string texto)
         {
             if (string.IsNullOrEmpty(texto)) return string.Empty;
@@ -157,11 +323,6 @@ namespace VitalTrack
             return ExpresionRegularNumeroTelefonoValido().IsMatch(value);
         }
 
-        private static string ObtenerTrayectoriaFoto(string? fileName)
-        {
-            if (string.IsNullOrWhiteSpace(fileName)) return string.Empty;
-            return Path.Combine(App.CarpetaFotos, fileName);
-        }
 
         private void btnCargarFoto_Click(object sender, RoutedEventArgs e)
         {
@@ -208,6 +369,8 @@ namespace VitalTrack
                 catch (Exception ex)
                 {
                     MessageBox.Show($"No se pudo copiar/mostrar la imagen.\n{ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    fotoUsuario.Source = ObtenerFotoPorDefecto();
+                    nombreArchivoFoto = App.FotoPorDefecto;
                 }
             }
         }

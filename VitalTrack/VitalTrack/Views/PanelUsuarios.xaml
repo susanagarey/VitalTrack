@@ -86,13 +86,7 @@
             </Grid.ColumnDefinitions>
             <Button Margin="10,10,10,10" Name="btnAlta" Content="Alta" FontSize="18" FontWeight="Bold" Click="btnAlta_Click" />
             <Button Margin="10,10,10,10" Name="btnActualizar" Content="Actualizar" Grid.Column="1" FontSize="18" FontWeight="Bold" Click="btnActualizar_Click"/>
-            <Button Margin="10,10,10,10" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold"/>
+            <Button Margin="10,10,10,10" Name="btnBaja" Content="Baja" Grid.Column="2" FontSize="18" FontWeight="Bold" Click="btnBaja_Click"/>
         </Grid>
-
-            
-
     </Grid>
-
-
-
 </UserControl>
