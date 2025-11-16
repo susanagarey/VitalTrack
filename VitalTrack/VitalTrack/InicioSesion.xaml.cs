@@ -2,6 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.NetworkInformation;
+using System.Net.Sockets;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,6 +76,20 @@ namespace VitalTrack
                     }
                     else
                     {
+                        // Registrar inicio de sesión en la tabla de auditoría
+                        var ip = ObtenerIpLocalV4() ?? "DESCONOCIDA";
+                        using (VitaltrackContext db = new VitaltrackContext())
+                        {
+
+                            Auditorium nuevoRegistroAuditoria = new Auditorium
+                            {
+                                UsuarioId = UsuarioActual.UsuarioId,
+                                Accion    = "LOGIN",
+                                Detalles  = $"{{\"ip\":\"{ip}\"}}",
+                            };
+                            db.Auditoria.Add(nuevoRegistroAuditoria);
+                            db.SaveChanges();
+                        }
                         // Pasar a pantalla principal
                         this.Visibility = Visibility.Collapsed;
                         MainWindow ventanaPrincipal = new MainWindow();
@@ -104,6 +121,41 @@ namespace VitalTrack
             byte[] bytes  = Encoding.UTF8.GetBytes(texto);
             byte[] hash   = sha.ComputeHash(bytes);
             return Convert.ToHexString(hash).ToLowerInvariant();
+        }
+
+        private static string? ObtenerIpLocalV4()
+        {
+            try
+            {
+                foreach (var ni in NetworkInterface.GetAllNetworkInterfaces())
+                {
+                    if (ni.OperationalStatus != OperationalStatus.Up) continue;
+                    if (ni.NetworkInterfaceType == NetworkInterfaceType.Loopback ||
+                        ni.NetworkInterfaceType == NetworkInterfaceType.Tunnel) continue;
+
+                    var props = ni.GetIPProperties();
+                    foreach (var ua in props.UnicastAddresses)
+                    {
+                        if (ua.Address.AddressFamily == AddressFamily.InterNetwork &&
+                            !IPAddress.IsLoopback(ua.Address))
+                        {
+                            return ua.Address.ToString();
+                        }
+                    }
+                }
+
+                foreach (var ip in Dns.GetHostEntry(Dns.GetHostName()).AddressList)
+                {
+                    if (ip.AddressFamily == AddressFamily.InterNetwork && !IPAddress.IsLoopback(ip))
+                        return ip.ToString();
+                }
+            }
+            catch
+            {
+                // Ignorar y devolver null
+            }
+
+            return null;
         }
     }
 }
