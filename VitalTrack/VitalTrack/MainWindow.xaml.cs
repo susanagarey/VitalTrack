@@ -45,8 +45,18 @@ namespace VitalTrack
                 txtAuditoria.Visibility       = Visibility.Hidden;
             }
 
+            if (UsuarioActual.RolId == Constantes.Roles.ADMINISTRADOR )
+            {
+                btnPacientes.IsEnabled        = true;
+                btnPacientes.IsHitTestVisible = false;
+                btnPacientes.Focusable        = false;
+                PacientesImagen.Visibility     = Visibility.Hidden;
+                txtPacientes.Visibility       = Visibility.Hidden;
+            }
+
             if (UsuarioActual.RolId == Constantes.Roles.PACIENTE ||
-                 UsuarioActual.RolId == Constantes.Roles.RECEPCIONISTA)
+                 UsuarioActual.RolId == Constantes.Roles.RECEPCIONISTA ||
+                 UsuarioActual.RolId == Constantes.Roles.ADMINISTRADOR)
             {
                 btnConstantes.IsEnabled = true;
                 btnConstantes.IsHitTestVisible = false;

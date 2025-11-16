@@ -1,0 +1,9 @@
+--
+-- Obtener listado de nombres de usuario y su rol
+--
+SELECT u.nombre_usuario, r.nombre
+FROM usuarios AS u,  roles AS r, usuarios_roles as ur
+WHERE u.usuario_id = ur.usuario_id AND
+	  ur.rol_id = r.rol_id;
+	  
+	  
