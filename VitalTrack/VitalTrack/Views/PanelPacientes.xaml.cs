@@ -27,6 +27,19 @@ namespace VitalTrack.Views
                 txtObservacionesPaciente.Visibility = Visibility.Hidden;
             }
 
+            if ( UsuarioActual.RolId == Constantes.Roles.RECEPCIONISTA )
+            {
+                lblObservaciones.Visibility = Visibility.Hidden;
+                txtObservacionesPaciente.Visibility = Visibility.Hidden;
+            }
+
+            if (UsuarioActual.RolId == Constantes.Roles.ENFERMERA || UsuarioActual.RolId == Constantes.Roles.MEDICO)
+            {
+                btnAlta.IsEnabled = false;
+                btnBaja.IsEnabled = false;
+                btnActualizar.IsEnabled = false;
+            }
+
             RefrescarListaPacientes();
         }
 
