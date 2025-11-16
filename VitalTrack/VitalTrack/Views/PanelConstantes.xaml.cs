@@ -17,9 +17,6 @@ using VitalTrack.Models;
 
 namespace VitalTrack.Views
 {
-    /// <summary>
-    /// Interaction logic for PanelConstantes.xaml
-    /// </summary>
     public partial class PanelConstantes : UserControl
     {
         private Paciente pacienteSeleccionado;

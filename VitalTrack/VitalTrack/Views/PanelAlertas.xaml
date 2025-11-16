@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
+             d:DesignHeight="600" FontSize="12" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
@@ -16,17 +16,16 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding AlertaId}" Width="*" Visibility="Hidden" />
                 <DataGridTextColumn Header="PacienteId" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
-                <DataGridTextColumn Header="Paciente" Binding="{Binding PacienteId}" Width="*"  />
+                <DataGridTextColumn Header="Paciente" Binding="{Binding NombreCompletoPaciente}" Width="2*"  />
                 <DataGridTextColumn Header="Tipo" Binding="{Binding TipoAlerta}" Width="*" />
                 <DataGridTextColumn Header="Severidad" Binding="{Binding Severidad}" Width="*" />
-                <DataGridTextColumn Header="Mensaje" Binding="{Binding Mensaje}" Width="*" />
+                <DataGridTextColumn Header="Mensaje" Binding="{Binding Mensaje}" Width="2*" />
                 
                 <DataGridTextColumn Header="Hora Ini." Binding="{Binding DisparadaEn}" Width="*" />
                 <DataGridTextColumn Header="Tiempo creada" Binding="{Binding CreadoEn}" Width="*" Visibility="Hidden" />
                 
                 <DataGridTextColumn Header="Reconocida" Binding="{Binding Reconocida}" Width="*" />
-                <DataGridTextColumn Header="Reconocedor" Binding="{Binding ReconocidaPor}" Width="*" Visibility="Hidden"  />
-                <DataGridTextColumn Header="Reconocedor" Binding="{Binding ReconocidaPor}" Width="*" />
+                <DataGridTextColumn Header="Reconocedor" Binding="{Binding NombreCompletoUsuario}" Width="2*" />
                 <DataGridTextColumn Header="T. recono." Binding="{Binding ActualizadoEn}" Width="*"  Visibility="Hidden" />
             </DataGrid.Columns>
         </DataGrid>
