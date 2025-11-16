@@ -39,6 +39,7 @@ namespace VitalTrack.Views
             txtNombrePaciente.Text          = paciente.Nombre;
             txtApellidosPaciente.Text       = paciente.Apellidos;
             txtDNIPaciente.Text             = paciente.Dni ?? "Desconocido";
+            txtSeguro.Text                  = paciente.Nhc ?? "Desconocido";
             txtDireccionPaciente.Text       = paciente.Direccion ?? "Desconocido";
             txtObservacionesPaciente.Text   = paciente.Observaciones ?? "Ninguna";
             txtTelefonoPaciente.Text        = paciente.Telefono ?? "Desconocido";

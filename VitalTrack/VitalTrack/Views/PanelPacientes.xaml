@@ -81,6 +81,9 @@
         <Label Content="Última act."  Grid.Row="3"  Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
         <TextBox x:Name="txtActualizacionPaciente"  Grid.Row="3" Grid.Column="1" IsReadOnly="True"  TextWrapping="Wrap" Margin="120,6,10,6" />
 
+        <Label Content="Seguro"  Grid.Row="4" Grid.Column="1" Height="34" Width="110" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0" />
+        <TextBox x:Name="txtSeguro" Grid.Row="4" Grid.Column="1" TextWrapping="Wrap" Margin="120,6,10,6" />
+
         <DataGrid Grid.Row="10"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,10,0,46" Grid.RowSpan="3" SelectionChanged="gridPacientes_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />

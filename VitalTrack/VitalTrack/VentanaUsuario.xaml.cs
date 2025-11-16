@@ -113,7 +113,7 @@ namespace VitalTrack
 
         private bool CrearUsuario()
         {
-            if ( ValidarCreacion() )
+            if ( ValidarCreacionUsuario() )
             {
                 // Preparar objeto Usuario
                 Usuario usuario       = new Usuario();
@@ -139,10 +139,9 @@ namespace VitalTrack
             {
                 return false;
             }
-
         }
 
-        private bool ValidarCreacion()
+        private bool ValidarCreacionUsuario()
         {
             // Validar campos texto:
             if (txtCuentaUsuario.Text.Trim() == "" ||
@@ -193,7 +192,7 @@ namespace VitalTrack
 
         private bool ActualizarUsuario()
         {
-            if ( ValidarActualizacion() )
+            if ( ValidarActualizacionUsuario() )
             {
                 Usuario usuario;
                 using (VitaltrackContext db = new VitaltrackContext())
@@ -236,7 +235,7 @@ namespace VitalTrack
             }
         }
 
-        private bool ValidarActualizacion()
+        private bool ValidarActualizacionUsuario()
         {
             // Validar campos texto:
             if (txtCuentaUsuario.Text.Trim() == "" ||
