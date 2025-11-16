@@ -1,0 +1,41 @@
+INSTRUCCIONES:
+==========================================================================================
+1) Instalar base de datos y datos de prueba en base de datos:
+
+nombre base datos: vitaltrack
+usuario: root
+contraseña: Abc123.
+
+
+2) Crear carpeta de red mapeada a F: donde se guardan las fotos de los usuarios, a los
+   que accede la app (para no guardarlas en la base de datos, que sería más pesado).
+
+    Se puede simular una carpeta en F: con 
+        md "C:\Fotos"
+        subst F: "C:\Fotos\"
+
+
+3) Copiar fotos de muestra a F:
+
+
+
+OBSERVACIONES:
+==========================================================================================
+Las cadenas de texto de:
+ - la conexión de base de datos
+ - carpeta "mapeada en red" para guardar las fotos de forma centralizada en un servidor
+se encuentran en el archivo appsettings.json :
+
+{
+  "ConnectionStrings": {
+    "Default": "server=localhost;database=vitaltrack;user id=root;password=Abc123."
+  },
+  "Images": {
+    "CarpetaFotos": "F:\\",
+    "FotoPorDefecto": "desconocido.png"
+  }
+}
+ 
+ 
+ 
+ 
