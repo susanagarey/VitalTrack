@@ -88,7 +88,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
                 <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Covertura" Binding="{Binding Nhc}" Width="2*"/>
+                <DataGridTextColumn Header="Seguro" Binding="{Binding Nhc}" Width="2*"/>
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
                 <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="3*"/>
                 <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}" Width="*"/>

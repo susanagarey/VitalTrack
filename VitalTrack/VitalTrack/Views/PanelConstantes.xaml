@@ -19,11 +19,12 @@
                 <DataGridTextColumn Header="PacienteID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
                 <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
 
+                <DataGridTextColumn Header="Fecha" Binding="{Binding CreadoEn}" Width="2*" />
+                
                 <DataGridTextColumn Header="SisMin" Binding="{Binding MinTensionSistolica}" Width="*"/>
                 <DataGridTextColumn Header="SisMax" Binding="{Binding MaxTensionSistolica}" Width="*"/>
                 <DataGridTextColumn Header="DisMin" Binding="{Binding MinTensionDiastolica}" Width="*" />
                 <DataGridTextColumn Header="DisMax" Binding="{Binding MaxTensionDiastolica}" Width="*" />
-
                 <DataGridTextColumn Header="CardMin" Binding="{Binding MinFrecuenciaCardiaca}" Width="*"/>
                 <DataGridTextColumn Header="CardMax" Binding="{Binding MaxFrecuenciaCardiaca}" Width="*"/>
                 <DataGridTextColumn Header="SpO2Min" Binding="{Binding MinSpo2}" Width="*"/>
@@ -33,27 +34,29 @@
                 <DataGridTextColumn Header="GlucMin" Binding="{Binding MinGlucosa}" Width="*"/>
                 <DataGridTextColumn Header="GlucMax" Binding="{Binding MaxGlucosa}" Width="*"/>
 
-                
-                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Header="Creador" Binding="{Binding CreadoPor}" Width="*"  Visibility="Hidden"/>
                 <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*"  Visibility="Hidden"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid Grid.Row="1"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >
+        <DataGrid Grid.Row="1"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" SelectionChanged="gridPacientes_SelectionChanged" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
-                <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="*"/>
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
-                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"/>
-                <DataGridTextColumn Header="Último Acceso" Binding="{Binding UltimoAcceso}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Seguro" Binding="{Binding Nhc}" Width="2*"/>
+                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="3*"/>
+                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}" Width="*"/>
+                <DataGridTextColumn Header="Nacimiento" Binding="{Binding FechaNacimiento}" Width="2*"/>
+                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="2*"/>
+                <DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" Width="3*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Observaciones" Binding="{Binding Observaciones}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Creación" Binding="{Binding CreadoEn}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Creador" Binding="{Binding CreadoPor}" Width="*" Visibility="Hidden"/>
                 <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*" Visibility="Hidden"/>
             </DataGrid.Columns>
         </DataGrid>
 
