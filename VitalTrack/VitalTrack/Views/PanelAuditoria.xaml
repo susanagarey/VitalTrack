@@ -13,22 +13,25 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
             <ColumnDefinition />
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
 
         <Label Content="Detalles técnicos"  Grid.Row="0" Grid.Column="0" Height="34" Width="159" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0" />
-        <TextBox x:Name="txtJSON" FontSize="10" Grid.Column="0" Grid.RowSpan="4" Margin="10,49,123,10" Grid.ColumnSpan="2" />
+        <TextBox x:Name="txtJSON" FontSize="10" Grid.Row="1" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="4" Margin="4,4,4,4"  />
 
         <!-- Foto usuario -->
-        <Image x:Name="fotoUsuario"  Grid.Row="0"  Grid.Column="1"  Grid.RowSpan="4" HorizontalAlignment="Left" Height="auto" Width="108" Margin="282,54,0,16" Source="/Images/Fotos/desconocido.png" />
+        <Image x:Name="fotoUsuario"  Grid.Row="1"  Grid.Column="4"  Grid.RowSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Height="auto" Width="auto" Margin="2,2,2,2" Source="/Images/Fotos/desconocido.png" />
 
 
-        <DataGrid Grid.Row="4"  x:Name="gridRegistros" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="10,0,10,0" Height="350" VerticalAlignment="Top" SelectionChanged="gridRegistros_SelectionChanged">
+        <DataGrid Grid.Row="4"  x:Name="gridRegistros" Grid.ColumnSpan="5" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="10,0,10,0" Height="362" VerticalAlignment="Center" SelectionChanged="gridRegistros_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding AuditoriaId}" Width="*" Visibility="Hidden" />
                 <DataGridTextColumn Header="UsuarioID" Binding="{Binding UsuarioId}" Width="*"  Visibility="Hidden"/>

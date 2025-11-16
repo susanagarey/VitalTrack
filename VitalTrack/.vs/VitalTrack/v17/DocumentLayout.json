@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\CODIGO\\SUSANA\\VitalTrack\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\iniciosesion.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\iniciosesion.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelauditoria.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelauditoria.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\iniciosesion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\iniciosesion.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelauditoria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelauditoria.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\models\\generated\\auditorium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\models\\generated\\auditorium.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelusuarios.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelusuarios.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\views\\panelusuarios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|solutionrelative:vitaltrack\\views\\panelusuarios.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BE11D1CE-1128-4870-9DA0-642E8B84792C}|VitalTrack\\VitalTrack.csproj|c:\\codigo\\susana\\vitaltrack\\vitaltrack\\mainwindow.xaml.cs||{8B382828-6202-11D1-8870-0000F87579D2}|",
@@ -42,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml",
               "RelativeDocumentMoniker": "VitalTrack\\MainWindow.xaml",
@@ -54,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "VitalTrack\\MainWindow.xaml.cs",
@@ -68,39 +72,51 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "InicioSesion.xaml",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\InicioSesion.xaml",
-              "RelativeDocumentMoniker": "VitalTrack\\InicioSesion.xaml",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\InicioSesion.xaml",
-              "RelativeToolTip": "VitalTrack\\InicioSesion.xaml",
+              "Title": "PanelAuditoria.xaml",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelAuditoria.xaml",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelAuditoria.xaml",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelAuditoria.xaml",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelAuditoria.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-11-16T16:41:19.099Z",
+              "WhenOpened": "2025-11-16T16:50:23.954Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "InicioSesion.xaml.cs",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\InicioSesion.xaml.cs",
-              "RelativeDocumentMoniker": "VitalTrack\\InicioSesion.xaml.cs",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\InicioSesion.xaml.cs",
-              "RelativeToolTip": "VitalTrack\\InicioSesion.xaml.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAAAFcAAABBAAAAAAAAAA==",
+              "Title": "PanelAuditoria.xaml.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelAuditoria.xaml.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelAuditoria.xaml.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelAuditoria.xaml.cs",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelAuditoria.xaml.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAwEsAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T16:41:28.334Z",
+              "WhenOpened": "2025-11-16T16:56:07.457Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PanelUsuarios.xaml",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelUsuarios.xaml",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelUsuarios.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-11-16T16:57:15.419Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Auditorium.cs",
-              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Models\\Generated\\Auditorium.cs",
-              "RelativeDocumentMoniker": "VitalTrack\\Models\\Generated\\Auditorium.cs",
-              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Models\\Generated\\Auditorium.cs",
-              "RelativeToolTip": "VitalTrack\\Models\\Generated\\Auditorium.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAfAAAAAAAAAA==",
+              "Title": "PanelUsuarios.xaml.cs",
+              "DocumentMoniker": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml.cs",
+              "RelativeDocumentMoniker": "VitalTrack\\Views\\PanelUsuarios.xaml.cs",
+              "ToolTip": "C:\\CODIGO\\SUSANA\\VitalTrack\\VitalTrack\\Views\\PanelUsuarios.xaml.cs",
+              "RelativeToolTip": "VitalTrack\\Views\\PanelUsuarios.xaml.cs",
+              "ViewState": "AgIAAGEAAAAAAAAAAAAcwH8AAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T16:42:13.305Z",
+              "WhenOpened": "2025-11-16T16:57:19.419Z",
               "EditorCaption": ""
             }
           ]

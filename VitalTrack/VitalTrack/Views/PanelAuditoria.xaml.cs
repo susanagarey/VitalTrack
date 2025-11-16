@@ -69,9 +69,18 @@ namespace VitalTrack.Views
 
         private void gridRegistros_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            txtJSON.Text = gridRegistros.SelectedItem is UsuarioAuditoriaViewModel seleccionado
-                ? seleccionado.Detalles ?? string.Empty
-                : string.Empty;
+            UsuarioAuditoriaViewModel seleccionado = gridRegistros.SelectedItem as UsuarioAuditoriaViewModel;
+
+            txtJSON.Text = seleccionado.Detalles ?? string.Empty;
+
+            string trayectoriaFoto = App.CarpetaFotos + (seleccionado.Foto ?? App.FotoPorDefecto);
+
+            var bitmap = new BitmapImage();
+            bitmap.BeginInit();
+            bitmap.CacheOption = BitmapCacheOption.OnLoad;
+            bitmap.UriSource = new Uri(trayectoriaFoto, UriKind.Relative);
+            bitmap.EndInit();
+            fotoUsuario.Source = bitmap;
         }
     }
 }
