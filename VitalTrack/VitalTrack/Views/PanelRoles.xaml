@@ -11,59 +11,29 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="7*"/>
+            <RowDefinition Height="10*"/>
+
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Roles" Grid.Column="0" Height="34" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
-        <ComboBox x:Name="cmbRoles" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,0,0"  Height="44" />
+        <Label Content="Roles" Grid.Column="0" Height="34" Width="90" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,22,0,0"/>
+        <ComboBox x:Name="cmbRoles" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,19,0,0"  Height="44" />
 
-        <Button  x:Name="btnAsignarRol" Content="Asignar rol a entidad" Grid.Row="0"  Grid.Column="1" Width="250" HorizontalAlignment="Center"  Margin="0,10,0,10" Click="btnAsignarRol_Click" />
+        <Button  x:Name="btnAsignarRol" Content="Asignar rol" Grid.Row="0"  Grid.Column="1" Width="250" HorizontalAlignment="Center"  Margin="0,10,0,10" Click="btnAsignarRol_Click" />
 
         <Label Content="Lista usuarios:"  Grid.Row="1"  Grid.Column="0" Height="34" Width="167" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <DataGrid Grid.Row="2"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Rol" Binding="{Binding UsuarioId}" Width="*"  />
-                <DataGridTextColumn Header="ID" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*"  Visibility="Hidden"/>
-                <DataGridTextColumn Header="Cuenta" Binding="{Binding NombreUsuario}" Width="*"/>
-                <DataGridTextColumn Header="Password" Binding="{Binding HashPassword}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="UsuarioId" Binding="{Binding UsuarioId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="RolId" Binding="{Binding RolId}" Width="*" Visibility="Hidden" />
+                <DataGridTextColumn Header="Rol" Binding="{Binding NombreRol}" Width="*"  />
+                <DataGridTextColumn Header="Nombre usuario" Binding="{Binding NombreUsuario}" Width="*" />
                 <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="*"/>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="*"/>
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="*"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*"/>
-                <DataGridTextColumn Header="Fecha Alta" Binding="{Binding CreadoEn}" Width="*"/>
-                <DataGridTextColumn Header="Último Acceso" Binding="{Binding UltimoAcceso}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
+                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="2*" />
             </DataGrid.Columns>
         </DataGrid>
-
-        <Label Content="Lista pacientes:"  Grid.Row="3"  Grid.Column="0" Height="34" Width="156" HorizontalAlignment="Left" VerticalAlignment="Center" />
-        <DataGrid Grid.Row="3"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,34,0,0" Grid.RowSpan="2"  >
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Rol" Binding="{Binding PacienteId}" Width="*" />
-                <DataGridTextColumn Header="ID" Binding="{Binding PacienteId}" Width="*" Visibility="Hidden" />
-                <DataGridTextColumn Header="Activo" Binding="{Binding Activo}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Covertura" Binding="{Binding Nhc}" Width="2*"/>
-                <DataGridTextColumn Header="Nombre" Binding="{Binding Nombre}" Width="2*"/>
-                <DataGridTextColumn Header="Apellidos" Binding="{Binding Apellidos}" Width="3*"/>
-                <DataGridTextColumn Header="Sexo" Binding="{Binding Sexo}" Width="*"/>
-                <DataGridTextColumn Header="Nacimiento" Binding="{Binding FechaNacimiento}" Width="2*"/>
-                <DataGridTextColumn Header="Teléfono" Binding="{Binding Telefono}" Width="2*"/>
-                <DataGridTextColumn Header="Dirección" Binding="{Binding Direccion}" Width="3*"  Visibility="Hidden"/>
-                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Observaciones" Binding="{Binding Observaciones}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Creación" Binding="{Binding CreadoEn}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Creador" Binding="{Binding CreadoPor}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Actualizado" Binding="{Binding ActualizadoEn}" Width="*" Visibility="Hidden"/>
-                <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*" Visibility="Hidden"/>
-            </DataGrid.Columns>
-        </DataGrid>
-
     </Grid>
 </UserControl>

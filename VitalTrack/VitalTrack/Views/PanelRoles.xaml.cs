@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VitalTrack.Data;
+using VitalTrack.Models;
+using VitalTrack.ViewModels;
 
 namespace VitalTrack.Views
 {
@@ -37,23 +39,77 @@ namespace VitalTrack.Views
             cmbRoles.SelectedValuePath = "RolId";
             cmbRoles.SelectedIndex      = -1;
 
-            RefrescarListaRoles();
-            RefrescarListaUsuarios();
+            RefrescarListaRolesUsuarios();
         }
 
         private void btnAsignarRol_Click(object sender, RoutedEventArgs e)
         {
+            UsuariosRolesViewModel usuarioSeleccionado = (UsuariosRolesViewModel)gridUsuarios.SelectedItem;
 
+            if (usuarioSeleccionado == null)
+            {
+                MessageBox.Show("Seleccione un usuario de la lista.", "Asignar rol", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (cmbRoles.SelectedIndex == -1)
+            {
+                MessageBox.Show("Seleccione un rol del desplegable.", "Asignar rol", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Eliminar rol anterior si existe
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                var usuarioRolExistente = db.UsuariosRoles
+                    .FirstOrDefault(ur => ur.UsuarioId == usuarioSeleccionado.UsuarioId);
+                if (usuarioRolExistente != null)
+                {
+                    db.UsuariosRoles.Remove(usuarioRolExistente);
+                    db.SaveChanges();
+                }
+            }
+
+
+            // Asignar rol al usuario
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                var usuarioRol = new UsuariosRole
+                {
+                    UsuarioId = usuarioSeleccionado.UsuarioId,
+                    RolId = (uint)cmbRoles.SelectedValue
+                };
+
+                db.UsuariosRoles.Add(usuarioRol);
+                db.SaveChanges();
+            }
+
+            RefrescarListaRolesUsuarios();
         }
 
-        private void RefrescarListaRoles()
+
+        private void RefrescarListaRolesUsuarios()
         {
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                var listaRolesUsuarios =
+                    (from u in db.Usuarios
+                     join ur in db.UsuariosRoles
+                         on u.UsuarioId equals ur.UsuarioId into urGroup
+                     from ur in urGroup.DefaultIfEmpty()
+                     select new UsuariosRolesViewModel
+                     {
+                         UsuarioId     = u.UsuarioId,
+                         RolId         = ur != null ? ur.RolId : 0u,
+                         NombreUsuario = u.NombreUsuario,
+                         NombreRol     = ur != null ? ur.Rol.Nombre : "Sin rol",
+                         Nombre        = u.Nombre,
+                         Apellidos     = u.Apellidos
+                     })
+                    .ToList();
 
-        }
-
-        private void RefrescarListaUsuarios()
-        {
-
+                gridUsuarios.ItemsSource = listaRolesUsuarios;
+            }
         }
     }
 }
