@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:VitalTrack.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800">
+             d:DesignHeight="600" FontSize="18" Background="AliceBlue" FontWeight="Bold" d:DesignWidth="800" Loaded="UserControl_Loaded">
     <Grid>
         <!-- Estructura global del control -->
         <Grid.RowDefinitions>
@@ -23,7 +23,7 @@
         <Label Content="Roles" Grid.Column="0" Height="34" Width="90" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"/>
         <ComboBox x:Name="cmbRoles" Width="290" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,10,0,0"  Height="44" />
 
-        <Button  x:Name="btnAsignarRol" Content="Asignar rol a entidad" Grid.Row="0"  Grid.Column="1" Width="250" HorizontalAlignment="Center"  Margin="0,10,0,10" />
+        <Button  x:Name="btnAsignarRol" Content="Asignar rol a entidad" Grid.Row="0"  Grid.Column="1" Width="250" HorizontalAlignment="Center"  Margin="0,10,0,10" Click="btnAsignarRol_Click" />
 
         <Label Content="Lista usuarios:"  Grid.Row="1"  Grid.Column="0" Height="34" Width="167" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <DataGrid Grid.Row="2"  x:Name="gridUsuarios" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" >

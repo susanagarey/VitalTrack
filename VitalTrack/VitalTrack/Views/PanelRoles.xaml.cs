@@ -24,5 +24,29 @@ namespace VitalTrack.Views
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            // Cargar combo roles con datos
+
+
+            RefrescarListaRoles();
+            RefrescarListaUsuarios();
+        }
+
+        private void btnAsignarRol_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RefrescarListaRoles()
+        {
+
+        }
+
+        private void RefrescarListaUsuarios()
+        {
+
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace VitalTrack
 
         private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Application.Current.Shutdown();
         }
 
         private void btnPacientes_Click(object sender, RoutedEventArgs e)
@@ -72,6 +72,11 @@ namespace VitalTrack
         {
             lblNombreVentana.Content = "Gestión roles";
             DataContext = new RolesViewModel();
+        }
+
+        private void btnLogOut_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
     }
 }
