@@ -72,6 +72,24 @@ namespace VitalTrack
 
                 txtCreadorPaciente.Text       = pacienteActualizar.NombreCreadoPor;
                 txtActualizadorPaciente.Text  = UsuarioActual.Nombre + " " + UsuarioActual.Apellidos;
+
+                if ( UsuarioActual.RolId == Constantes.Roles.PACIENTE )
+                {
+                    // Deshabilitar edición de ciertos campos si es paciente
+                    // Estos campos deben ser editables por el personal sanitario/administrativo, tras solicitud
+                    txtNombrePaciente.IsEnabled    = false;
+                    txtApellidosPaciente.IsEnabled = false;
+                    txtDNIPaciente.IsEnabled       = false;
+                    txtSeguro.IsEnabled            = false;
+                    dpFechaNacimientoPaciente.IsEnabled = false;
+                    rbHombre.IsEnabled             = false;
+                    rbMujer.IsEnabled              = false;
+                    rbTrans.IsEnabled              = false;
+                    rbNoDeclarado.IsEnabled        = false;
+                    txtCreadorPaciente.IsEnabled   = false;
+                    lblObservaciones.Visibility        = Visibility.Collapsed;
+                    txtObservacionesPaciente.Visibility = Visibility.Collapsed;
+                }
             }
             else
             {

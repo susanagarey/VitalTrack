@@ -18,6 +18,15 @@ namespace VitalTrack.Views
         public PanelPacientes()
         {
             InitializeComponent();
+
+            if ( UsuarioActual.RolId == Constantes.Roles.PACIENTE )
+            {
+                btnAlta.IsEnabled        = false;
+                btnBaja.IsEnabled        = false;
+                lblObservaciones.Visibility = Visibility.Hidden;
+                txtObservacionesPaciente.Visibility = Visibility.Hidden;
+            }
+
             RefrescarListaPacientes();
         }
 
@@ -191,6 +200,25 @@ namespace VitalTrack.Views
                                    NombreActualizadoPor = x.ActualizadoPorNavigation != null ? (x.ActualizadoPorNavigation.Nombre + " " + x.ActualizadoPorNavigation.Apellidos) : "Desconocido",
                                }).
                                ToList();
+            }
+
+            if (UsuarioActual.RolId == Constantes.Roles.PACIENTE)
+            {
+                uint? pacienteIdUsuario;
+
+                using (VitaltrackContext db = new VitaltrackContext())
+                {
+                    Usuario? usuarioAutenticado = db.Usuarios.
+                                               Where(u => u.UsuarioId == UsuarioActual.UsuarioId).
+                                               FirstOrDefault();
+
+                    pacienteIdUsuario = db.Pacientes.
+                                           Where(u => u.Nombre.Equals(usuarioAutenticado.Nombre) && u.Apellidos.Equals(usuarioAutenticado.Apellidos)).
+                                           Select(u => u.PacienteId).
+                                           FirstOrDefault();
+
+                    pacientes = pacientes.Where(p => p.PacienteId == pacienteIdUsuario).ToList();
+                }
             }
 
             return pacientes;

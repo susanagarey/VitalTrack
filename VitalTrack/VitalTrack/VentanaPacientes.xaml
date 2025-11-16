@@ -95,7 +95,7 @@
         <TextBox x:Name="txtEmailPaciente" Grid.Row="6" Grid.Column="1" TextWrapping="Wrap" Margin="115,2,8,2" />
 
 
-        <Label Content="Observaciones"  Grid.Row="7" Grid.Column="0"  Height="34" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <Label x:Name="lblObservaciones"  Content="Observaciones"  Grid.Row="7" Grid.Column="0"  Height="34" Width="144" HorizontalAlignment="Left" VerticalAlignment="Center" />
         <TextBox x:Name="txtObservacionesPaciente" Grid.Row="8" Grid.Column="0" TextWrapping="Wrap" Margin="10,2,8,2" Grid.ColumnSpan="2" Grid.RowSpan="3" />
 
 

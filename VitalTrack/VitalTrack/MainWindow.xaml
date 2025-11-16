@@ -49,8 +49,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="UsuarioImage" HorizontalAlignment="Center" VerticalAlignment="Top" Height="auto" Width="auto" Margin="0,5,0,0" Source="Images/icons8-employee-100-6.png"/>
-                    <TextBlock Text="Usuarios" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137"/>
+                    <Image x:Name="UsuarioImagen" HorizontalAlignment="Center" VerticalAlignment="Top" Height="auto" Width="auto" Margin="0,5,0,0" Source="Images/icons8-employee-100-6.png"/>
+                    <TextBlock x:Name="txtUsuarios" Text="Usuarios" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="137"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -62,8 +62,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="RolesImage" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="auto"  Source="Images/icons8-employee-100.png"/>
-                    <TextBlock Text="Roles" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="143"/>
+                    <Image x:Name="RolesImagen" HorizontalAlignment="Center" VerticalAlignment="Top" Height="67" Width="auto"  Source="Images/icons8-employee-100.png"/>
+                    <TextBlock x:Name="txtRoles" Text="Roles" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,20,0,0" Width="143"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -75,8 +75,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="PacientesImage" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="56" Source="Images/icons8-employee-100-2.png" RenderTransformOrigin="0.746,0.579"/>
-                    <TextBlock Text="Pacientes" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="-0.397,0.418" Width="138"/>
+                    <Image x:Name="PacientesImagen" HorizontalAlignment="Center" VerticalAlignment="Center" Height="56" Width="56" Source="Images/icons8-employee-100-2.png" RenderTransformOrigin="0.746,0.579"/>
+                    <TextBlock x:Name="txtPacientes"  Text="Pacientes" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="-0.397,0.418" Width="138"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -88,8 +88,8 @@
                         <ColumnDefinition/>
                         <ColumnDefinition Width="153.333"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="ConstantesImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="62" Width="72" Source="Images/sales_icon.png" Grid.ColumnSpan="2"/>
-                    <TextBlock Text="Constantes" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Width="141"/>
+                    <Image x:Name="ConstantesImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="62" Width="72" Source="Images/sales_icon.png" Grid.ColumnSpan="2"/>
+                    <TextBlock x:Name="txtConstantes"  Text="Constantes" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="2,0,0,0" Width="141"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -101,8 +101,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="GraficasImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/line_chart.png"/>
-                    <TextBlock Text="Gráficas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.151,0.589" Width="149" Margin="0,21,0,0"/>
+                    <Image x:Name="GraficasImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/line_chart.png"/>
+                    <TextBlock x:Name="txtGraficas"  Text="Gráficas" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="1.151,0.589" Width="149" Margin="0,21,0,0"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -114,8 +114,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="TareaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-job-100-5.png"/>
-                    <TextBlock Text="Alertas" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,21,0,0" Width="134"/>
+                    <Image x:Name="AlertasImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="Images/icons8-job-100-5.png"/>
+                    <TextBlock x:Name="txtAlertas"  Text="Alertas" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,21,0,0" Width="134"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -127,8 +127,8 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="AuditoriaImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="/Images/icons8-permission-50.png"/>
-                    <TextBlock Text="Auditoría" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Width="125"/>
+                    <Image x:Name="AuditoriaImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10" Source="/Images/icons8-permission-50.png"/>
+                    <TextBlock x:Name="txtAuditoria"  Text="Auditoría" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0" Width="125"/>
                 </Grid>
             </Button>
         </StackPanel>
@@ -140,7 +140,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="LogoutImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-9.png"/>
+                    <Image x:Name="LogoutImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-9.png"/>
                     <TextBlock Text="Cerrar sesión" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="9,21,0,0" Width="141"/>
                 </Grid>
             </Button>
@@ -153,7 +153,7 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
-                    <Image x:Name="CerrarImage" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-4.png"/>
+                    <Image x:Name="CerrarImagen" HorizontalAlignment="Left" VerticalAlignment="Center" Height="auto" Width="auto" Margin="0,5,0,10"  Source="Images/icons8-exit-100-4.png"/>
                     <TextBlock Text="Cerrar App" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,21,0,0"/>
                 </Grid>
             </Button>
