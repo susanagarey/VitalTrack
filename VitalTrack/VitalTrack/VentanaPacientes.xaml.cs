@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -54,6 +55,7 @@ namespace VitalTrack
                 txtNombrePaciente.Text        = pacienteActualizar.Nombre;
                 txtApellidosPaciente.Text     = pacienteActualizar.Apellidos;
                 txtDNIPaciente.Text           = pacienteActualizar.Dni;
+                txtSeguro.Text                = pacienteActualizar.Nhc;
                 txtTelefonoPaciente.Text      = pacienteActualizar.Telefono;
                 txtEmailPaciente.Text         = pacienteActualizar.Email;
                 txtDireccionPaciente.Text     = pacienteActualizar.Direccion;
@@ -86,6 +88,11 @@ namespace VitalTrack
             }
         }
 
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
+
         private void btnGuardar_Click(object sender, RoutedEventArgs e)
         {
             bool exito = false;
@@ -104,11 +111,6 @@ namespace VitalTrack
                 // Borrar campos, tras éxito en operación:
                 
             }
-        }
-
-        private void btnCerrar_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private bool CrearPaciente()
@@ -235,12 +237,106 @@ namespace VitalTrack
         }
       
 
+        // MÉTODOS AUXILIARES
         private bool ValidarCreacionPaciente() {
+  
+
+            // Comprobar que no existe ya un paciente con el mismo DNI
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                if ( !ValidarActualizarPaciente())
+                {
+                    return false;
+                }
+
+                int cuentaDNI = db.Pacientes                             
+                                  .Count(u => u.Dni == txtDNIPaciente.Text.Trim());
+                if ( cuentaDNI > 0 )
+                {
+                    MessageBox.Show("El DNI ya está en uso.", "DNI existente", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return false;
+                }
+            }
+
             return true;
         }
 
         private bool ValidarActualizarPaciente() {
+            // Validar campos texto:
+            if (txtNombrePaciente.Text.Trim() == "" ||
+                txtApellidosPaciente.Text.Trim() == "" ||
+                txtDNIPaciente.Text.Trim() == "" ||
+                txtTelefonoPaciente.Text.Trim() == "" )
+            {
+                MessageBox.Show("Por favor, complete todos los campos obligatorios.", "Campos incompletos", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Validar teléfono español con regex (también se puede hacer con el evento PreviewTextInput)
+            if (!esNumeroTelefonoValido(txtTelefonoPaciente.Text))
+            {
+                MessageBox.Show("Introduzca un teléfono español válido (9 dígitos comenzando por 6, 7, 8 o 9; puede incluir prefijo +34/0034 y separadores espacio o guion).",
+                                "Teléfono inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Validar DNI básico (8 dígitos + letra)   
+            if (!Regex.IsMatch(txtDNIPaciente.Text.Trim(), @"^\d{8}[A-Za-z]$"))
+            {
+                MessageBox.Show("Introduzca un DNI válido (8 dígitos seguidos de una letra).",
+                                "DNI inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
+            // Validar email básico (si es que lo tiene)
+            if (txtEmailPaciente.Text.Trim() != "" && !esEmailValido(txtEmailPaciente.Text))
+            {
+                MessageBox.Show("Introduzca un email válido.",
+                                "Email inválido", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
             return true;
+        }
+
+        private static bool esNumeroTelefonoValido(string? phone)
+        {
+            if (string.IsNullOrWhiteSpace(phone)) return false;
+            var value = phone.Trim();
+            return ExpresionRegularNumeroTelefonoValido().IsMatch(value);
+        }
+
+        // Patrón:
+        // ^(?:\+34|0034)?\s*([6789])(?:[\s\-]?\d){8}$
+        // - ^ y $ anclan el inicio/fin
+        // - (?:\+34|0034)? prefijo opcional de España
+        // - \s* permite espacios tras el prefijo
+        // - ([6789]) primer dígito nacional válido (móvil: 6/7, fijo: 8/9)
+        // - (?:[\s\-]?\d){8} resto de 8 dígitos, permitiendo espacios/guiones entre ellos
+        // [GeneratedRegex(@"^(?:\+34|0034)?\s*([6789])(?:[\s\-]?\d){8}$", RegexOptions.CultureInvariant)]
+        private static Regex ExpresionRegularNumeroTelefonoValido()
+        {
+            return new Regex(@"^(?:\+34|0034)?\s*([6789])(?:[\s\-]?\d){8}$", RegexOptions.CultureInvariant);
+        }
+
+        private static bool esEmailValido(string? email)
+        {
+            if (string.IsNullOrWhiteSpace(email)) return false;
+            var value = email.Trim();
+            return ExpresionRegularEmailBasico().IsMatch(value);
+        }
+
+        // Patrón básico de email:
+        // ^(?=.{1,254}$)(?=.{1,64}@)[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,}$
+        // - Limita longitud total (254) y de la parte local (64)
+        // - Permite caracteres comunes en la parte local
+        // - Dominio compuesto por etiquetas válidas separadas por puntos
+        // - TLD de al menos 2 letras
+        private static Regex ExpresionRegularEmailBasico()
+        {
+            return new Regex(
+                @"^(?=.{1,254}$)(?=.{1,64}@)[A-Za-z0-9.!#$%&'*+/=?^_`{|}~-]+@([A-Za-z0-9-]+\.)+[A-Za-z]{2,}$",
+                RegexOptions.CultureInvariant | RegexOptions.IgnoreCase);
         }
     }
 }

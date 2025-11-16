@@ -169,27 +169,25 @@ namespace VitalTrack.Views
             {
                 pacientes = db.Pacientes.
                                Where(x => x.Activo == true).
-                               Include(x => x.CreadoPorNavigation).
-                               Include(x => x.ActualizadoPorNavigation).
                                Select(x => new PacienteAmpliadoViewModel
                                {
-                                   PacienteId = x.PacienteId,
-                                   Nhc = x.Nhc,
-                                   Dni = x.Dni,
-                                   Nombre = x.Nombre,
-                                   Apellidos = x.Apellidos,
-                                   FechaNacimiento = x.FechaNacimiento,
-                                   Sexo = x.Sexo,
-                                   Telefono = x.Telefono,
-                                   Email = x.Email,
-                                   Direccion = x.Direccion,
-                                   Observaciones = x.Observaciones,
-                                   Activo = x.Activo,
-                                   CreadoEn = x.CreadoEn,
-                                   ActualizadoEn = x.ActualizadoEn,
-                                   CreadoPor = x.CreadoPor,
-                                   NombreCreadoPor = x.CreadoPorNavigation != null ? (x.CreadoPorNavigation.Nombre + " " + x.CreadoPorNavigation.Apellidos) : "Desconocido",
-                                   ActualizadoPor = x.ActualizadoPor,
+                                   PacienteId           = x.PacienteId,
+                                   Nhc                  = x.Nhc,
+                                   Dni                  = x.Dni,
+                                   Nombre               = x.Nombre,
+                                   Apellidos            = x.Apellidos,
+                                   FechaNacimiento      = x.FechaNacimiento,
+                                   Sexo                 = x.Sexo,
+                                   Telefono             = x.Telefono,
+                                   Email                = x.Email,
+                                   Direccion            = x.Direccion,
+                                   Observaciones        = x.Observaciones,
+                                   Activo               = x.Activo,
+                                   CreadoEn             = x.CreadoEn,
+                                   ActualizadoEn        = x.ActualizadoEn,
+                                   CreadoPor            = x.CreadoPor,
+                                   NombreCreadoPor      = x.CreadoPorNavigation != null ? (x.CreadoPorNavigation.Nombre + " " + x.CreadoPorNavigation.Apellidos) : "Desconocido",
+                                   ActualizadoPor       = x.ActualizadoPor,
                                    NombreActualizadoPor = x.ActualizadoPorNavigation != null ? (x.ActualizadoPorNavigation.Nombre + " " + x.ActualizadoPorNavigation.Apellidos) : "Desconocido",
                                }).
                                ToList();
