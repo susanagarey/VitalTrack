@@ -44,8 +44,6 @@
         </DataGrid>
 
         <Label Content="Lista pacientes:"  Grid.Row="3"  Grid.Column="0" Height="34" Width="156" HorizontalAlignment="Left" VerticalAlignment="Center" />
-
-
         <DataGrid Grid.Row="3"  x:Name="gridPacientes" Grid.ColumnSpan="2" IsReadOnly="True" SelectionMode="Single" AutoGenerateColumns="False" SelectionUnit="FullRow" Margin="0,34,0,0" Grid.RowSpan="2"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Rol" Binding="{Binding PacienteId}" Width="*" />
@@ -66,7 +64,6 @@
                 <DataGridTextColumn Header="Actualizador" Binding="{Binding ActualizadoPor}" Width="*" Visibility="Hidden"/>
             </DataGrid.Columns>
         </DataGrid>
-
 
     </Grid>
 </UserControl>

@@ -17,6 +17,7 @@ namespace VitalTrack
     /// </summary>
     public partial class MainWindow : Window
     {
+        public bool solicitadoFinalApp = false;
         public MainWindow()
         {
             InitializeComponent();
@@ -33,12 +34,7 @@ namespace VitalTrack
             DataContext = new UsuariosViewModel();
         }
 
-        private void btnCerrar_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
-
-        private void btnPacientes_Click(object sender, RoutedEventArgs e)
+         private void btnPacientes_Click(object sender, RoutedEventArgs e)
         {
             lblNombreVentana.Content = "Gestión pacientes";
             DataContext = new PacientesViewModel();
@@ -76,6 +72,12 @@ namespace VitalTrack
 
         private void btnLogOut_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void btnCerrar_Click(object sender, RoutedEventArgs e)
+        {
+            solicitadoFinalApp = true;
             this.Close();
         }
     }

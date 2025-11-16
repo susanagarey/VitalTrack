@@ -79,6 +79,12 @@ namespace VitalTrack
                         ventanaPrincipal.ShowDialog();
 
                         // De vuelta al cuado de inicio de sesión:
+                        if (ventanaPrincipal.solicitadoFinalApp)
+                        {
+                            Application.Current.Shutdown();
+                            return;
+                        }
+
                         txtContrasena.Clear();
                         txtNombreUsuario.Clear();
                         this.Visibility = Visibility.Visible;

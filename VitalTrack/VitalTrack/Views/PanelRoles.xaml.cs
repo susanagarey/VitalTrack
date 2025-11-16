@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VitalTrack.Data;
 
 namespace VitalTrack.Views
 {
@@ -28,7 +29,13 @@ namespace VitalTrack.Views
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
             // Cargar combo roles con datos
-
+            using (VitaltrackContext db = new VitaltrackContext())
+            {
+                cmbRoles.ItemsSource = db.Roles.ToList();
+            }
+            cmbRoles.DisplayMemberPath = "Nombre";
+            cmbRoles.SelectedValuePath = "RolId";
+            cmbRoles.SelectedIndex      = -1;
 
             RefrescarListaRoles();
             RefrescarListaUsuarios();
